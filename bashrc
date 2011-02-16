@@ -58,6 +58,8 @@ alias pictures='cd ~/pictures'
 alias images='cd ~/pictures'
 alias sources='cd /DATA/sources'
 alias acmetex='cd ~/documents/acmetex'
+alias gitrepos='cd /DATA/gitrepos'
+alias dotfiles='cd ~/dotfiles'
 
 
 # general aliases
