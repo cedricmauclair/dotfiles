@@ -30,3 +30,5 @@ $if Bash
 "\e\C-v": "\C-a\C-k$\C-y\e\C-e\C-a\C-y="
 
 $endif
+
+set completion-ignore-case on
