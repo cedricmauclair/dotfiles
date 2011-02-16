@@ -137,6 +137,10 @@ if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
 elif [ -f ${HOME}/.bash_completion ]; then
     source ${HOME}/.bash_completion
+elif [ -d /etc/bash_completion.d ]; then
+    for comp in /etc/bash_completion.d/*; do
+        source ${comp} 2>/dev/null
+    done
 fi
 
 
