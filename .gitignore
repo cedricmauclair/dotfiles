@@ -1,2 +1,5 @@
 # ignore 'git-config'
 git-config
+
+# ignore 'backup' folder in vim
+vim/backup/*
