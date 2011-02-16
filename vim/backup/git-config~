@@ -1,8 +1,0 @@
-[http]
-	proxy = proxy.onecert.fr:80
-[user]
-	name = cedricmauclair
-	email = cedric.mauclair@gmail.com
-[core]
-	editor = emacsclient -c -a emacs
-	pager = most
