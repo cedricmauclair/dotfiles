@@ -1,0 +1,27 @@
+#### display fonts
+
+fontDir        ~/.fonts
+
+
+#### PostScript output control
+
+psFile          "|lp -drsi"
+psPaperSize     A4
+initialZoom     page
+continuousView  no
+
+
+#### text output control
+
+# TODO: may cause trouble when pasting text
+textEncoding    UTF-8
+textEOL         unix
+textPageBreaks  no
+
+
+#### misc settings
+
+enableT1lib     yes
+enableFreeType  yes
+antialias       yes
+urlCommand "htmlview '%s'"

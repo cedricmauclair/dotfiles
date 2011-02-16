@@ -1,0 +1,32 @@
+$include /etc/inputrc
+
+
+#### defaults
+
+set editing-mode  emacs
+set bell-style    none
+set input-meta    on
+set convert-meta  off
+set output-meta   on
+
+set completion-query-items  150
+
+
+#### ``bash'' specifics
+
+$if Bash
+
+# edit the path
+"\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+
+# insert open and close double quotes
+# and move to just after the open quote
+"\C-x\"": "\"\"\C-b"
+
+# quote the current or previous word
+"\C-xq": "\eb\"\ef\""
+
+# edit variable on current line.
+"\e\C-v": "\C-a\C-k$\C-y\e\C-e\C-a\C-y="
+
+$endif
