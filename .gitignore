@@ -2,4 +2,11 @@
 git-config
 
 # ignore 'backup' folder in vim
+vim/backup
 vim/backup/*
+
+# ignore 'backup' and 'auto-save-list' folders in emacs
+emacs.d/backup
+emacs.d/backup/*
+emacs.d/auto-save/list
+emacs.d/auto-save-list/*
