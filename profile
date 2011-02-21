@@ -19,7 +19,7 @@ export HISTSIZE=2000
 export HISTFILESIZE=2000
 export HISTIGNORE="cd:ls"
 export HISTCONTROL=ignoreboth:erasedups
-export PROMPT_COMMAND="history -n; history -a; ${PROMPT_COMMAND}"
+export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
 set show-all-if-ambiguous on
 
