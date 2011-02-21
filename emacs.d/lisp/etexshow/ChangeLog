@@ -1,0 +1,127 @@
+2004-04-11  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el (etexshow-quit, etexshow-cmd): make work with xemacs
+
+2003-10-01  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el (etexshow-version): cleaned up the todo list
+
+2003-09-11  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el (etexshow-cmd): ConTeXt :) sensitive invocation.
+	When running etexshow-cmd and the cursor is at a word, this word
+	will be looked up in the commands-buffer.
+
+2003-04-08  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el (etexshow-quit): Removes comment buffer, unless
+	etexshow-keep-comment-buffer is non nil. Now deletes windows only
+	if they are available. Version Alpha 5a
+
+2003-04-06  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: added line break when a lot of parameters appear
+	on the right side of the explanation.
+
+2003-02-06  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: Removed installation instructions.
+
+	* README.txt: Added installation instructions.
+
+	* Makefile: now make dist will create a zip file and a tgz file
+	with the files to be distributed.
+
+2003-01-26  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: the help display does not use an external file
+	anymore. So there won't be any errors like `file not found'.
+	Extended help page. This will be release `Alpha 5'.
+
+2003-01-25  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: Added multiple language comments. The
+	comments-file has for each comment a language attribute. There is
+	a list of allowed languages (`etexshow-language-filter') and a
+	current language. You can toggle the current language with
+	`L'. Only languages from the list of allowed languages can be
+	used. 
+	Added a command history mechanism. When you jump to a command via
+	a hyperlink, type `B' to get back to the originating command.
+	Added hyperlink navigation for keyboard. This is bound to
+	`J'. Afterwards the user needs to input the number of the
+	hyperlink. Tested with xemacs. It looks as if etexshow is almost
+	feature complete (for a beta release).
+	
+
+2003-01-24  Patrick Gundlach  <patrick@gundla.ch>
+
+	* pgxml.el: (almost) all namespace references are removed. Don't
+	know if this is a nasty hack, but it allows me to parse the same
+	files without the namespace in the element names. So <cd:command>
+	is now <command>.
+
+	* etexshow.el: Now missing xml files or not writable directories
+	for cache file will generate an error. This took me some time to
+	track down, since my xemacs has no working debug-on-error
+	feature. I thought it was xemacs fault, but this time it is
+	innocent... 
+	Bound all 'self-insert-command' keys to isearch functionality.
+	Inserted help page to be viewed with `H' or `?'. Created
+	hyperlinks for the inherit="..." fields. These are displayed as
+	"see \somecommand (1)". So you can toggle the display of
+	somecommand with the number-key 1. Multiple levels possible. Try
+	\definecombinedlist! Added mouse support for hyperlinks. Button 1
+	will toggle command, button 2 jums to cmd.
+	Made overlays to work with xemacs (again). Removed all
+	overlay-properties and changed them to overlay-faces. 
+		
+2003-01-23  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: Always replace cd:something with <something>,
+	regardless of the position in the string. Etexshow now accepts
+	the <choice> element and displays a vertical bar | to indicate a
+	choice. See \setupinterlinespace for an (the) example. Changed
+	the way the xml and cache files are handled. You can now have
+	more than one xml and cache file (say one official and one with
+	your own commands). The cache will be generated when a) there is
+	no cache file yet and b) when the xml-file gets updated. So the
+	user has to copy the xml-file and not worry about an old cache.
+
+2003-01-22  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: made isearch and comments to work with xemacs
+	21.4. :( I don't know how to find files with a special coding
+	system (utf-8). Creates a comment file if necessary.
+	Added overlay.el to etexshow distribution for xemacs users.
+
+2003-01-21  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: Fixed some bugs concerning commenting the
+	commands. Removed superfluous spaces in output that would sneak
+	into the comments file. Actually: all basic commenting
+	functionality is implemented. Not yet supported: inherit,
+	language, generation of the surrounding xml-tags. 
+
+2003-01-10  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: Greatly improved startup speed when already
+	started once. The hash table and the commands list won't be
+	regenerated. Added Hook etexshow-mode-hook, which starts right
+	after the cursor in the command buffer can be seen. 
+	Isearch facility improved: isearch does not start at the
+	beginning of a line ('start' matches \definestartstop). There is
+	a command to search again forward or backward. 
+
+2003-01-09  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: mouse support added (wheelmouse). Better cursor
+	keys support: you now cannot move past the last entry with the
+	cursor down. Support for page up/down. These keys will scroll one
+	page down. Mouse button 1 will show the current entry. Tested
+	with xemacs.
+
+2003-01-08  Patrick Gundlach  <patrick@gundla.ch>
+
+	* etexshow.el: added xemacs compatibilty.
+

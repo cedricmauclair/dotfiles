@@ -1,0 +1,32 @@
+etexshow todo and bugs:
+=======================
+Please send comments to patrick@gundlach.ch
+Current Version: Alpha 5b
+
+Bugs:
+-----
+1) two commands are missing from the xml-file: \remark and \menubutton
+2) cd:something = <something> is hardcoded
+3) toggle-command behaves strange when there are more commands
+   referenced and (e.g.)the last one is opened first
+4) toggle language behaves strange when this lang is removed from the
+   filterlist. 
+
+TODO:
+-----
+
+* make face for insertstring --------comment starts here ---------
+
+* make etexshow-with-face macro independant of count, face
+
+Next version:
+-------------
+
+Some future version:
+--------------------
+* use customization
+* make all of cont-en.xml work
+* make other interfaces (cont-nl, cont-de...) work
+* Perhaps some functionality to merge comments
+  from other people in order to build some documentation that is
+  shared in the community.

@@ -2,7 +2,7 @@
 ;;
 ;; Copyright (c) 2011, Cédric Mauclair.
 ;;
-;; Licenced under GPL v3.0 and after.
+;; Licenced under GPL v3.0.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -28,7 +28,12 @@
   (concat emacs-root "lisp/")
   "Root directory of your lisp tree.")
 
+(defconst themes-root
+  (concat emacs-root "themes/")
+  "Root directory of your themes tree.")
+
 (add-to-list 'load-path lisp-root)
+(add-to-list 'load-path themes-root)
 
 (defconst more-lisp-dirs
   (list "auctex" "etexshow")
@@ -496,9 +501,9 @@
   (defvar etexshow-xml-files-alist nil)
   (when (require 'etexshow nil t)
     (setq etexshow-xml-files-alist
-          '(("~/emacs/lisp/etexshow/cont-en.xml" . "~/emacs/lisp/etexshow/cont-en.cache")
-            ("~/emacs/lisp/etexshow/mycommands.xml" . "~/emacs/lisp/etexshow/mycommands.cache")))
-    (setq etexshow-comment-file "~/emacs/lisp/etexshow/cont-en-comments.xml" )
+          `((,(concat lisp-root "etexshow/cont-en.xml") . ,(concat lisp-root "etexshow/cont-en.cache"))
+            (,(concat lisp-root "etexshow/mycommands.xml") . ,(concat lisp-root "etexshow/mycommands.cache"))))
+    (setq etexshow-comment-file (concat lisp-root "etexshow/cont-en-comments.xml"))
     (add-hook 'etexshow-mode-hook
               '(lambda () (local-set-key (kbd "<f7>") 'etexshow-quit))))
 
@@ -506,10 +511,6 @@
   (my-context:insert "english" "{\\english " "}")
   (my-context:insert "quote"   "« " " »")
   (my-context:insert "inline"  "|<|" "|>|")
-
-  (defun my:context-view-memoir ()
-    (interactive)
-    (shell-command "pdfopen -viewer xpdf ~/memoir/phd-thesis-memoir.pdf"))
 
   (defun my-hooks:context-mode ()
     (load "texmathp" t t)
@@ -524,13 +525,9 @@
                 '(lambda () (local-set-key (kbd "<f7>") 'etexshow-quit))))
 
     (local-set-key (kbd "C-c C-c") nil)
-    (local-set-key (kbd "C-c C-c C-m")
-                   (lambda ()
-                     (interactive) (save-buffer) (my:compile "make -k")))
     (local-set-key (kbd "C-c C-c")
                    (lambda ()
                      (interactive) (save-buffer) (my:compile "make -k")))
-    (local-set-key (kbd "C-c C-v") 'my:context-view-memoir)
 
     ; insert strings in the buffer)
     (local-set-key (kbd "C-c i")   nil)
@@ -577,6 +574,7 @@
 
 ;<< —— useful functions      —————————————————————————————————————— >>
 
+; we may get rid of the following
 ;<< ———— colors functions ————————————————————————————————————————— >>
 
 ;; ** Helper functions **
@@ -765,7 +763,7 @@ Otherwise, return a single face.
 	(car output)))))
 
 
-;; ** Color functions **
+;; color functions
 (defun set-region-face (beg end face &optional force-overlays dont-make-face)
   "Set the face of a region.
 Set the region from BEG to END to have face FACE.
@@ -939,7 +937,7 @@ one added first), if negative removes all."
   (defvar term-default-fg-color (face-attribute 'default :foreground))
   (term terminal))
 
-; cut/copy line or region
+; copy/cut line or region
 (defadvice kill-ring-save (before slick-copy activate compile)
   "When called interactively with no active region, copy a single line instead."
   (interactive
@@ -1110,8 +1108,8 @@ in that cyclic order."
 ; miscellaneous
 (global-set-key (kbd "C-.")   'undo)
 (global-set-key (kbd "RET")   'newline-and-indent)
-(global-set-key (kbd "M-j")   'join-line)
-(global-set-key (kbd "M-J")
+(global-set-key (kbd "M-j")   'join-line); join with previous line
+(global-set-key (kbd "M-J")              ; join with next line
   (lambda nil (interactive) (join-line t)))
 (global-set-key (kbd "M-SPC") 'dabbrev-expand) ; [`just-one-space' >>> "M-/"]
 (global-set-key (kbd "M-/")   'just-one-space) ; [`dabbrev-expand' >>> "M-SPC"]
@@ -1128,6 +1126,20 @@ in that cyclic order."
   (global-set-key (kbd "C-»") 'drag-stuff-right)
   (global-set-key (kbd "C-+") 'drag-stuff-up)
   (global-set-key (kbd "C--") 'drag-stuff-down))
+
+; free all function keys
+(global-set-key (kbd "<f1>")  nil)
+(global-set-key (kbd "<f2>")  nil)
+(global-set-key (kbd "<f3>")  nil)
+(global-set-key (kbd "<f4>")  nil)
+(global-set-key (kbd "<f5>")  nil)
+(global-set-key (kbd "<f6>")  nil)
+(global-set-key (kbd "<f7>")  nil)
+(global-set-key (kbd "<f8>")  nil)
+(global-set-key (kbd "<f9>")  nil)
+(global-set-key (kbd "<f10>") nil)
+(global-set-key (kbd "<f11>") nil)
+(global-set-key (kbd "<f12>") nil)
 
 ;>> general keybindings (end) ————————————————————————————————————— >>
 ;<< —— personnal keybindings —————————————————————————————————————— >>
@@ -1201,15 +1213,15 @@ in that cyclic order."
 ;>> compilation buffer (end) —————————————————————————————————————— >>
 ;<< —— delimiters            —————————————————————————————————————— >>
 
-(setq skeleton-pair-filter-function
-      '(lambda ()
-         (cond
-          ((eq last-command-char ?\")
-           (or (looking-at   (regexp-quote (string last-command-char)))
-               (looking-back (regexp-quote (string last-command-char)))
-               (looking-back "[[:graph:]]")))
-          (t
-           (looking-at (regexp-quote (string last-command-char)))))))
+(defvar skeleton-pair-filter-function
+  '(lambda ()
+     (cond
+      ((eq last-command-char ?\")
+       (or (looking-at   (regexp-quote (string last-command-char)))
+           (looking-back (regexp-quote (string last-command-char)))
+           (looking-back "[[:graph:]]")))
+      (t
+       (looking-at (regexp-quote (string last-command-char)))))))
 
 (ignore-errors (tm/initialize))
 
@@ -1245,6 +1257,7 @@ found there."
   (global-set-key (kbd "M-' M-i") nil)
   (global-set-key (kbd "M-' M-a") nil)
 
+  (defvar prefix)
   (defun my:set-keys (func from to)
     (eval `(global-set-key (kbd ,(concat prefix (char-to-string from)))
       (lambda (save) (interactive "P") (,func ,from ,to (point) save))))
