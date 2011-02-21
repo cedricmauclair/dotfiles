@@ -7,7 +7,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;<< —— server                 ————————————————————————————————————— >>
+;<< -- server                 ------------------------------------- >>
 
 (load "server" t t)
 
@@ -15,8 +15,8 @@
    (not (server-running-p)))
   (server-start))
 
-;>> server (end) —————————————————————————————————————————————————— >>
-;<< —— load-path              ————————————————————————————————————— >>
+;>> server (end) -------------------------------------------------- >>
+;<< -- load-path              ------------------------------------- >>
 
 (message default-directory)
 
@@ -45,29 +45,29 @@
                (if (file-name-absolute-p dir) dir
                  (concat lisp-root dir))))
 
-;>> load-path (end) ——————————————————————————————————————————————— >>
+;>> load-path (end) ----------------------------------------------- >>
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;<< —— before-save-hook & write-file-hooks ———————————————————————— >>
+;<< -- before-save-hook & write-file-hooks ------------------------ >>
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'write-file-hooks 'time-stamp)
 
-;>> before-save-hook & write-file-hooks (end) ————————————————————— >>
-;<< —— enable/disable some commands        ———————————————————————— >>
+;>> before-save-hook & write-file-hooks (end) --------------------- >>
+;<< -- enable/disable some commands        ------------------------ >>
 
 (put 'dired-find-alternate-file 'disabled nil)
 
-;>> enable/disable some commands (end) ———————————————————————————— >>
+;>> enable/disable some commands (end) ---------------------------- >>
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;<< —— custom-set-variable    ————————————————————————————————————— >>
+;<< -- custom-set-variable    ------------------------------------- >>
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -230,8 +230,8 @@
  '(word-wrap t)
  '(yank-pop-change-selection t))
 
-;>> custom-set-variable (end) ————————————————————————————————————— >>
-;<< —— custom-set-faces       ————————————————————————————————————— >>
+;>> custom-set-variable (end) ------------------------------------- >>
+;<< -- custom-set-faces       ------------------------------------- >>
 
 (make-face 'ibuffer-header-face)
 
@@ -241,9 +241,9 @@
                 :slant normal :weight normal :height 80 :width normal
                 :foundry "unknown" :family "DejaVu Sans Mono")))))
 
-;>> custom-set-faces —————————————————————————————————————————————— >>
+;>> custom-set-faces ---------------------------------------------- >>
 
-;<< —— (re)set some variables ————————————————————————————————————— >>
+;<< -- (re)set some variables ------------------------------------- >>
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defcustom explicit-shell-file-name "/bin/bash" ""
@@ -251,8 +251,8 @@
   :group 'acme)
 (setq-default filladapt-mode t filladapt-mode-line-string nil)
 
-;>> (re)set some variables (end) —————————————————————————————————— >>
-;<< —— enable some goodies    ————————————————————————————————————— >>
+;>> (re)set some variables (end) ---------------------------------- >>
+;<< -- enable some goodies    ------------------------------------- >>
 
 (when (require 'mic-paren nil t)
   (paren-activate))
@@ -263,8 +263,8 @@
 (when (require 'dired-x nil t)
   (add-hook 'dired-mode-hook 'dired-omit-mode))
 
-;>> enable some goodies (end) ————————————————————————————————————— >>
-;<< —— load some packages     ————————————————————————————————————— >>
+;>> enable some goodies (end) ------------------------------------- >>
+;<< -- load some packages     ------------------------------------- >>
 
 (defcustom packages-to-load
   '("drag-stuff" "fic-mode" "filladapt" "gnuplot"
@@ -277,13 +277,13 @@
 (dolist (package packages-to-load)
   (require (intern package) nil t))
 
-;>> load some packages (end) —————————————————————————————————————— >>
+;>> load some packages (end) -------------------------------------- >>
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;<< —— help-mode     —————————————————————————————————————————————— >>
+;<< -- help-mode     ---------------------------------------------- >>
 
 (add-hook
  'help-mode-hook
@@ -292,8 +292,8 @@
    (local-set-key (kbd "<M-left>")  'help-go-back)
    (local-set-key (kbd "<M-right>") 'help-go-forward)))
 
-;>> help-mode (end) ——————————————————————————————————————————————— >>
-;<< —— folding-mode  —————————————————————————————————————————————— >>
+;>> help-mode (end) ----------------------------------------------- >>
+;<< -- folding-mode  ---------------------------------------------- >>
 
 (when (require 'folding nil t)
   (defcustom add-folding-mode-to
@@ -323,8 +323,8 @@
      (local-set-key (kbd "C-c f o") 'folding-open-buffer)
      (local-set-key (kbd "C-c f c") 'folding-whole-buffer))))
 
-;>> folding-mode (end) ———————————————————————————————————————————— >>
-;<< —— lua-mode      —————————————————————————————————————————————— >>
+;>> folding-mode (end) -------------------------------------------- >>
+;<< -- lua-mode      ---------------------------------------------- >>
 
 (when (require 'lua-mode nil t)
   ; (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
@@ -342,9 +342,9 @@
      (local-set-key (kbd "C-c s") 'lua-show-process-buffer)
      (local-set-key (kbd "C-c h") 'lua-hide-process-buffer))))
 
-;>> lua-mode (end) ———————————————————————————————————————————————— >>
+;>> lua-mode (end) ------------------------------------------------ >>
 
-;<< —— latex-mode    —————————————————————————————————————————————— >>
+;<< -- latex-mode    ---------------------------------------------- >>
 
 (when (require 'tex-site nil t)
   (defvar TeX-shell-escape-mode nil
@@ -429,8 +429,8 @@
   (folding-add-to-marks-list 'latex-mode "%<<" "%>>")
   (add-hook 'LaTeX-mode-hook 'my-hooks:latex-mode))
 
-;>> latex-mode ———————————————————————————————————————————————————— >>
-;<< —— context-mode  —————————————————————————————————————————————— >>
+;>> latex-mode ---------------------------------------------------- >>
+;<< -- context-mode  ---------------------------------------------- >>
 
 (when (require 'tex-site nil t)
   (defun my:tex-unbreakable-space ()
@@ -566,16 +566,16 @@
   (folding-add-to-marks-list 'context-mode "%<<" "%>>")
   (add-hook 'ConTeXt-mode-hook 'my-hooks:context-mode))
 
-;>> context-mode —————————————————————————————————————————————————— >>
+;>> context-mode -------------------------------------------------- >>
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;<< —— useful functions      —————————————————————————————————————— >>
+;<< -- useful functions      -------------------------------------- >>
 
 ; we may get rid of the following
-;<< ———— colors functions ————————————————————————————————————————— >>
+;<< ---- colors functions ----------------------------------------- >>
 
 ;; ** Helper functions **
 (defun simple-make-face (spec &optional face-name)
@@ -927,7 +927,7 @@ one added first), if negative removes all."
       (setq my:set-cursor-color-buffer (buffer-name)))))
 (add-hook 'post-command-hook 'my:set-cursor-color-according-to-mode)
 
-;>> colors functions (end) ———————————————————————————————————————— >>
+;>> colors functions (end) ---------------------------------------- >>
 
 ; invoke shell with correct colors
 (defun my:launch-terminal (terminal)
@@ -1066,8 +1066,11 @@ in that cyclic order."
   (my:toggle-comment-line (- n)
                             (eq last-command 'my:go-up-and-toggle-comment-line)))
 
-;>> useful functions (end) ———————————————————————————————————————— >>
-;<< —— general keybindings   —————————————————————————————————————— >>
+(autoload 'ps2pdf-from-buffer "ps2pdf" nil t)
+(autoload 'ps2pdf-from-region "ps2pdf" nil t)
+
+;>> useful functions (end) ---------------------------------------- >>
+;<< -- general keybindings   -------------------------------------- >>
 
 ; movements
 (global-set-key (kbd "M-p") 'previous-line)
@@ -1141,8 +1144,8 @@ in that cyclic order."
 (global-set-key (kbd "<f11>") nil)
 (global-set-key (kbd "<f12>") nil)
 
-;>> general keybindings (end) ————————————————————————————————————— >>
-;<< —— personnal keybindings —————————————————————————————————————— >>
+;>> general keybindings (end) ------------------------------------- >>
+;<< -- personnal keybindings -------------------------------------- >>
 
 (global-set-key (kbd "M-D") 'my:duplicate-line-or-region)
 (global-set-key (kbd "M-*") 'my:toggle-case)
@@ -1165,8 +1168,8 @@ in that cyclic order."
 
 (windmove-default-keybindings 'meta)
 
-;>> personnal keybindings (end) ——————————————————————————————————— >>
-;<< —— themes                —————————————————————————————————————— >>
+;>> personnal keybindings (end) ----------------------------------- >>
+;<< -- themes                -------------------------------------- >>
 
 (defun my:dark-theme ()
   "Changes the theme to a dark one."
@@ -1178,8 +1181,8 @@ in that cyclic order."
   (interactive)
   (load-theme 'acme-light))
 
-;>> themes (end) —————————————————————————————————————————————————— >>
-;<< —— compilation buffer    —————————————————————————————————————— >>
+;>> themes (end) -------------------------------------------------- >>
+;<< -- compilation buffer    -------------------------------------- >>
 
 (defvar cur nil) (defvar w nil) (defvar h nil)
 
@@ -1210,8 +1213,8 @@ in that cyclic order."
 (add-hook 'compilation-mode-hook 'my-hooks:compilation-mode)
 (add-to-list 'compilation-finish-functions 'my:compile-check-delete)
 
-;>> compilation buffer (end) —————————————————————————————————————— >>
-;<< —— delimiters            —————————————————————————————————————— >>
+;>> compilation buffer (end) -------------------------------------- >>
+;<< -- delimiters            -------------------------------------- >>
 
 (defvar skeleton-pair-filter-function
   '(lambda ()
@@ -1274,4 +1277,4 @@ found there."
     (my:set-keys (cdr elt) ?« ?»)
     (my:set-keys (cdr elt) ?' ?')))
 
-;>> delimiters (end) —————————————————————————————————————————————— >>
+;>> delimiters (end) ---------------------------------------------- >>

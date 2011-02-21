@@ -97,6 +97,7 @@ For GNU/Linux and Unix-ish systems, this will be \"kpdf\" or
       pdf-file
       (error "PDF creation failed"))))
 
+;;;###autoload
 (defun ps2pdf (file)
   "Convert Postscript FILE to PDF."
   (interactive "fSelect Postscript file: ")
@@ -126,6 +127,7 @@ For GNU/Linux and Unix-ish systems, this will be \"kpdf\" or
     (message "PDF file %s created successfully" pdfname)
     pdfname))
 
+;;;###autoload
 (defun ps2pdf-from-region ()
   "Create PDF from region and open it."
   (interactive)
@@ -134,6 +136,7 @@ For GNU/Linux and Unix-ish systems, this will be \"kpdf\" or
     (shell-command
      (format "%s %s" ps2pdf-open-program (ps2pdf-with-faces 'region)))))
 
+;;;###autoload
 (defun ps2pdf-from-buffer ()
   "Create PDF from buffer and open it."
   (interactive)
