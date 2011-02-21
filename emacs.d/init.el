@@ -309,7 +309,7 @@
   (add-hook
    'folding-mode-hook
    (lambda nil
-     (local-set-key (kbd "M-g")     nil) ; make it a prefix
+     (define-key folding-mode-map (kbd "M-g") nil) ; make it a prefix
      (local-set-key (kbd "M-g M-g") 'folding-goto-line)
      (local-set-key (kbd "C-c f")   nil) ; make it a prefix
      (local-set-key (kbd "M-ESC")   'folding-toggle-show-hide)
