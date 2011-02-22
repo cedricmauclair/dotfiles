@@ -62,7 +62,7 @@ export PAGER=most
 if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
     export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
     export PYTHONPATH=${PREFIX}/lib/python2.6/site-packages
-    export PERL5LIB=${PREFIX}/lib/perl5/site_perl/5.8.8:${PERL5LIB}
+    export PERL5LIB=${PREFIX}/lib/perl5/site_perl/5.12.3:${PERL5LIB}
 fi
 
 
