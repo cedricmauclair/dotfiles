@@ -20,13 +20,16 @@ case "${TERM}" in
     dumb) ;;
     screen)
         [ -f ${HOME}/.dircolors/dircolors.screen ] &&
-            eval "`dircolors -b ${HOME}/.dircolors/dircolors.screen`" ;;
-    eterm-color)
+            eval $(dircolors --sh ${HOME}/.dircolors/dircolors.screen) ;;
+    *-color)
         [ -f ${HOME}/.dircolors/dircolors.emacs ] &&
-            eval "`dircolors -b ${HOME}/.dircolors/dircolors.emacs`" ;;
+            eval $(dircolors --sh ${HOME}/.dircolors/dircolors.emacs) ;;
+    *-256color)
+        [ -f ${HOME}/.dircolors/dircolors.256color ] &&
+            eval $(dircolors --sh ${HOME}/.dircolors/dircolors.256color) ;;
     *)
         [ -f ${HOME}/.dircolors/dircolors ] &&
-            eval "`dircolors -b`" ;;
+            eval $(dircolors -sh) ;;
 esac
 
 
