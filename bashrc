@@ -29,7 +29,7 @@ case "${TERM}" in
             eval $(dircolors --sh ${HOME}/.dircolors/dircolors.256color) ;;
     *)
         [ -f ${HOME}/.dircolors/dircolors ] &&
-            eval $(dircolors -sh) ;;
+            eval $(dircolors --sh) ;;
 esac
 
 
