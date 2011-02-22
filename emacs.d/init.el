@@ -1275,6 +1275,7 @@ found there."
     (my:set-keys (cdr elt) ?[ ?])
     (my:set-keys (cdr elt) ?\" ?\")
     (my:set-keys (cdr elt) ?« ?»)
+    (my:set-keys (cdr elt) ?< ?>)
     (my:set-keys (cdr elt) ?' ?')))
 
 ;>> delimiters (end) ---------------------------------------------- >>
