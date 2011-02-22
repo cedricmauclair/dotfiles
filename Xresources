@@ -1,51 +1,43 @@
 ! urxvt
-urxvt.geometry:           115x40
-urxvt.background:         grey10
-urxvt.foreground:         grey65
-urxvt.inheritPixmap:      true
-urxvt.reverseVideo:       false
-urxvt.tintColor:          white
-urxvt.shading:            20 !trans=100, 0=opaque
-urxvt.fading:             10 !term unfocus
-urxvt.font:               xft:DejaVu Sans Mono-8
-urxvt.scrollBar:          false
-! urxvt.scrollBar_floating: true
-! urxvt.scrollBar_right:    true
-! urxvt.scrollColor:        #202020
-! urxvt.scrollstyle:        plain
-urxvt.urlLauncher:        google-chrome
-urxvt.cursorColor:        tomato
-urxvt.cursorBlink:        false
-! urxvt.borderLess:         true
-urxvt.internalBorder:     0
-urxvt.skipBuiltinGlyphs:  true
-urxvt.transparent:        true
-urxvt.perl-ext-common:    default,matcher,tabbed
+urxvt*geometry:           115x40
+urxvt*inheritPixmap:      true
+urxvt*reverseVideo:       false
+urxvt*tintColor:          white
+urxvt*shading:            20 !trans=100, 0=opaque
+urxvt*fading:             10 !term unfocus
+urxvt*font:               xft:DejaVu Sans Mono-9
+urxvt*scrollBar:          false
+urxvt*urlLauncher:        google-chrome
+urxvt*cursorBlink:        false
+urxvt*internalBorder:     0
+urxvt*skipBuiltinGlyphs:  true
+urxvt*transparent:        true
+urxvt*perl-ext-common:    default,matcher,tabbed
 
-urxvt.colorBD:            grey65
-urxvt.colorUL:            grey65
-urxvt.color0:             grey10
-urxvt.color8:             grey20
-! urxvt.color1:             lightgoldenrod4
-urxvt.color1:             darkred
-urxvt.color9:             #cdcd8b
-urxvt.color2:             darkslategray
-urxvt.color10:            #44836e
-urxvt.color3:             grey40
-urxvt.color11:            #648f81
-urxvt.color4:             grey65
-urxvt.color12:            darkseagreen4
-urxvt.color5:             paleturquoise4
-urxvt.color13:            #386858
-urxvt.color6:             #3f4d5c
-urxvt.color14:            azure4
-urxvt.color7:             grey10
-urxvt.color15:            grey50
+urxvt*background: grey10
+urxvt*foreground: grey75
+urxvt*cursorColor:tomato
+urxvt*color0:     grey5
+urxvt*color1:     rgb:90/10/10
+urxvt*color2:     rgb:ae/ce/92
+urxvt*color3:     rgb:96/8a/38
+urxvt*color4:     rgb:41/41/71
+urxvt*color5:     rgb:96/3c/59
+urxvt*color6:     rgb:41/81/79
+urxvt*color7:     rgb:be/be/be
+urxvt*color8:     rgb:66/66/66
+urxvt*color9:     rgb:cf/61/71
+urxvt*color10:    rgb:c5/f7/79
+urxvt*color11:    rgb:ff/f7/96
+urxvt*color12:    rgb:41/86/be
+urxvt*color13:    rgb:cf/9e/be
+urxvt*color14:    rgb:71/be/be
+urxvt*color15:    rgb:ff/ff/ff
 
 
 ! emacs (to speed up things a bit)
-emacs.geometry:           115x69+0+0
-emacs.font:               DejaVu Sans Mono-8
-emacs.fontbackend:        xft
+emacs*geometry:           115x69+0+0
+emacs*font:               DejaVu Sans Mono-8
+emacs*fontbackend:        xft
 
-emacsclient.geometry:     115x69+0+0
+emacsclient*geometry:     115x69+0+0
