@@ -643,7 +643,7 @@ existing faces)."
                    ((eq a 'uninverse)   '(:inverse nil))
                    (t (simple-face-parse-compound-attr attr)))))
     (message "%s -- %s" face as)
-    (no-errors (apply 'set-face-attribute face nil as))))
+    (apply 'set-face-attribute face nil as)))
 
 (defun simple-face-parse-compound-attr (attr)
   (cond
