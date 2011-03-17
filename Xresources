@@ -5,7 +5,7 @@ urxvt*reverseVideo:       false
 urxvt*tintColor:          white
 urxvt*shading:            20 !trans=100, 0=opaque
 urxvt*fading:             10 !term unfocus
-urxvt*font:               xft:DejaVu Sans Mono-9
+urxvt*font:               xft:DejaVu Sans Mono-8
 urxvt*scrollBar:          false
 urxvt*urlLauncher:        google-chrome
 urxvt*cursorBlink:        false
