@@ -133,7 +133,7 @@
  '(font-latex-match-italic-declaration-keywords (quote (("italic" "") ("slanted" "") ("english" ""))))
  '(font-latex-match-math-command-keywords (quote (("math" "{") ("mathematics" "{"))))
  '(font-latex-match-reference-keywords (quote (("NN" "[") ("NC" "[") ("AR" "[") ("FR" "[") ("MR" "[") ("LR" "[") ("HL" "[") ("NR" "[") ("SR" "[") ("DL" "[") ("DC" "[") ("about" "[|{{[") ("at" "[|{{[") ("atpage" "[") ("in" "[|{{[") ("inchp" "[") ("insec" "[") ("infig" "[") ("intab" "[") ("ineq" "[") ("ref" "[[") ("reference" "[["))))
- '(font-latex-match-sectioning-0-keywords (quote (("startpart" "[[") ("stoppart" ""))))
+ '(font-latex-match-sectioning-0-keywords (quote (("startpart" "[[") ("stoppart" "") ("startstructurelevel" "[[") ("stopstructurelevel" ""))))
  '(font-latex-match-sectioning-1-keywords (quote (("title" "[{") ("startchapter" "[[") ("stopchapter"))))
  '(font-latex-match-sectioning-2-keywords (quote (("subject" "[{") ("startsection" "[[") ("stopsection"))))
  '(font-latex-match-sectioning-3-keywords (quote (("subsubject" "[{") ("startsubsection" "[[") ("stopsubsection"))))
@@ -1150,8 +1150,8 @@ in that cyclic order."
 (global-set-key (kbd "M-D") 'my:duplicate-line-or-region)
 (global-set-key (kbd "M-*") 'my:toggle-case)
 
-(global-set-key (kbd "<C-up>")   'my:go-up-and-toggle-comment-line)
-(global-set-key (kbd "<C-down>") 'my:toggle-comment-line-and-go-down)
+(global-set-key (kbd "<M-up>")   'my:go-up-and-toggle-comment-line)
+(global-set-key (kbd "<M-down>") 'my:toggle-comment-line-and-go-down)
 
 ; personnal keybindings
 (global-set-key (kbd "C-c t")   nil) ; make it a prefix
@@ -1166,7 +1166,7 @@ in that cyclic order."
 (global-set-key (kbd "<backtab>")
   (read-kbd-macro "M-x i s w i t c h b - b u f f e r RET RET"))
 
-(windmove-default-keybindings 'meta)
+(windmove-default-keybindings 'control)
 
 ;>> personnal keybindings (end) ----------------------------------- >>
 ;<< -- themes                -------------------------------------- >>
