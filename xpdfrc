@@ -14,7 +14,7 @@ continuousView  no
 #### text output control
 
 # TODO: may cause trouble when pasting text
-textEncoding    UTF-8
+# textEncoding    UTF-8
 textEOL         unix
 textPageBreaks  no
 
