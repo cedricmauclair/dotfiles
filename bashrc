@@ -9,7 +9,7 @@ fi
 # are we an interactive shell?
 if [ "${PS1}" ]; then
     shopt -s checkwinsize
-    [ "${PS1}" = "\\s-\\v\\\$ " ] && PS1="[\u@\h \W]\\$ "
+    PS1="[\u@\h \W]\\$ "
 else
     return
 fi
