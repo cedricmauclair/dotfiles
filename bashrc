@@ -136,7 +136,7 @@ aliascmd() { x=$(history 2 | head -1 | sed "s/.\{7\}//"); alias $1="${x}"; }
 
 
 # BSD specifics
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     alias ls="ls -hG"
 fi
 
