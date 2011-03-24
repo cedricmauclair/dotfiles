@@ -149,7 +149,7 @@ fi
 
 # libraries configurations
 export LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH}
-export RUBYLIB=/DATA/usr/local/lib:/DATA/usr/local/lib/gems/cheat-1.3.0/lib:/DATA/usr/local/lib/gems/rdoc-3.4/lib
+export RUBYLIB=${PREFIX}/lib:${PREFIX}/lib/gems/cheat-1.3.0/lib:${PREFIX}/lib/gems/rdoc-3.4/lib
 
 
 # other customization
