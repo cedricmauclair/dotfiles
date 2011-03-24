@@ -48,6 +48,14 @@ if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
 fi
 
 
+# TERM settings
+if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
+    export TERM=rxvt-unicode-256color
+elif [ "$(uname)" = "Darwin" ]; then
+    export TERM=rxvt
+fi
+
+
 # viewers/pager/editor configurations
 export PDFVIEWER=xpdf
 export PSVIEWER=gv
