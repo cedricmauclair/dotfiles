@@ -48,14 +48,6 @@ if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
 fi
 
 
-# TERM settings
-if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-    export TERM=rxvt-unicode-256color
-elif [ "$(uname)" = "Darwin" ]; then
-    export TERM=rxvt
-fi
-
-
 # viewers/pager/editor configurations
 export PDFVIEWER=xpdf
 export PSVIEWER=gv
@@ -73,6 +65,15 @@ if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
     export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
     export PYTHONPATH=${PREFIX}/lib/python2.6/site-packages
     export PERL5LIB=${PREFIX}/lib/perl5/site_perl/5.12.3:${PERL5LIB}
+fi
+
+
+# Platform specific settings
+if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
+    export TERM=rxvt-unicode-256color
+elif [ "$(uname)" = "Darwin" ]; then
+    export TERM=rxvt
+    export PAGER=less
 fi
 
 
