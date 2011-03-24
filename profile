@@ -1,6 +1,6 @@
 # from ``/etc/profile'' on Fedora 11
 pathmunge () {
-    if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+    if ! echo $PATH | egrep -q "(^|:)$1($|:)" ; then
        if [ "$2" = "after" ] ; then
           PATH=$PATH:$1
        else
