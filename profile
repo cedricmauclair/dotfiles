@@ -29,10 +29,10 @@ export PREFIX=/opt
 
 if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
     PREFIX=/DATA/usr/local
-
-    pathmunge /DATA/texlive/2010/bin/i386-linux
-    pathmunge /DATA/opt/google/chrome
 fi
+
+[ -d "/DATA/texlive/2010/bin/i386-linux" ] && pathmunge /DATA/texlive/2010/bin/i386-linux
+[ -d "/DATA/opt/google/chrome" ]           && pathmunge /DATA/opt/google/chrome
 
 [ -d "${PREFIX}/bin" ]     && pathmunge ${PREFIX}/bin
 [ -d "${PREFIX}/scripts" ] && pathmunge ${PREFIX}/scripts
@@ -56,6 +56,8 @@ export DVIVIEWER=xdvi
 export EDITOR=vim
 export VISUAL=view
 export PAGER=most
+
+export OSFONTDIR=/usr/share/fonts:/DATA/texlive/2010/texmf-dist/fonts:${HOME}/.fonts
 
 
 # libraries configurations
