@@ -61,7 +61,7 @@ alias pictures='cd ~/pictures'
 alias images='cd ~/pictures'
 alias sources='cd /DATA/sources'
 alias acmetex='cd ~/documents/acmetex'
-alias gitrepos='cd /DATA/gitrepos'
+alias gitrepos='cd /DATA/gitrepos/cmauclai'
 alias dotfiles='cd ~/dotfiles'
 
 
