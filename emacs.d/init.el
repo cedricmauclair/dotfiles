@@ -459,7 +459,7 @@
     :type 'boolean)
 
   (if ConTeXt-use-beta
-      (setenv "PATH" "/DATA/context/tex/texmf-linux/bin:$PATH" t))
+      (setenv "PATH" "/DATA/context-minimals/tex/texmf-linux/bin:$PATH" t))
 
   (eval-after-load "context"
     '(progn
