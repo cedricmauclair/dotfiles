@@ -53,6 +53,7 @@ alias l.="ls -ldA .*"
 # directories aliases
 alias ..="cd .."
 alias home='cd ~/'
+alias scratch='cd ~/scratch'
 alias thesis='cd ~/thesis'
 alias memoir='cd ~/memoir'
 alias documents='cd ~/documents'
