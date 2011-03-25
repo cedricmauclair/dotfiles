@@ -26,9 +26,11 @@ set show-all-if-ambiguous on
 
 # additions to the ``PATH''
 export PREFIX=/opt
+export TEXLIVE=/opt/texlive
 
 if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
     PREFIX=/DATA/usr/local
+    TEXLIVE=/DATA/texlive
 fi
 
 [ -d "/DATA/texlive/2010/bin/i386-linux" ] && pathmunge /DATA/texlive/2010/bin/i386-linux
