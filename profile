@@ -57,7 +57,7 @@ export EDITOR=vim
 export VISUAL=view
 export PAGER=most
 
-export OSFONTDIR=/usr/share/fonts:/DATA/texlive/2010/texmf-dist/fonts:${HOME}/.fonts
+export OSFONTDIR=${HOME}/.fonts:/DATA/texlive/texmf-local/fonts:/DATA/texlive/2010/texmf-dist/fonts:/usr/share/fonts
 
 
 # libraries configurations
