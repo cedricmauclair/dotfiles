@@ -3,6 +3,8 @@ $include /etc/inputrc
 
 #### defaults
 
+set blink-matching-paren on
+
 set editing-mode  emacs
 set bell-style    none
 set input-meta    on
@@ -29,6 +31,24 @@ $if Bash
 # edit variable on current line.
 "\e\C-v": "\C-a\C-k$\C-y\e\C-e\C-a\C-y="
 
-$endif
-
 set completion-ignore-case on
+
+# Prefix search!  Type "s" then press up -- only search through history that
+# started with "s" -- e.g. "ssh", "source", etc.
+#
+# Since this is .inputrc, this is automatically turned on for many different
+# programs: bash, irb, python, mysql, octave, etc etc.  sweet.
+#
+# For any of these programs, if you configure history to persist across
+# sessions, then this becomes a usage search feature.  For example, I type "ss"
+# then start pressing up to scroll through all machines I've ssh'd to in the
+# last several months.  (C-r reverse search can do this too, but for some
+# reason prefix search feels much nicer.)  If I can't remember how to type a
+# specific command, I can just prefix search for its beginning, e.g. "ki"
+# reveals "kill -9 %1".
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\eOA": history-search-backward
+"\eOB": history-search-forward
+
+$endif
