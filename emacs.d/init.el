@@ -33,7 +33,7 @@
   "Root directory of your themes tree.")
 
 (add-to-list 'load-path lisp-root)
-(add-to-list 'load-path themes-root)
+(add-to-list 'custom-theme-load-path themes-root)
 
 (defconst more-lisp-dirs
   (list "auctex" "etexshow")
@@ -109,6 +109,7 @@
  '(current-language-environment "UTF-8")
  '(custom-buffer-done-kill t)
  '(custom-group-tag-faces nil)
+ '(custom-safe-themes (quote ("a3b69ce66b64b5a13865c495168011382c040c7e" "48b99c0a71f0b2b237f9638f07807936b87bf4de" default)))
  '(default-input-method nil)
  '(delete-old-versions t)
  '(delete-selection-mode t)
