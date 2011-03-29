@@ -1,7 +1,7 @@
 # defaults
-if [ -f "/etc/bashrc" ]; then
+if [ -f /etc/bashrc ]; then
     source /etc/bashrc
-elif [ -f "/etc/bash.bashrc" ]; then
+elif [ -f /etc/bash.bashrc ]; then
     source /etc/bash.bashrc
 fi
 
@@ -9,7 +9,7 @@ fi
 # are we an interactive shell?
 if [ "${PS1}" ]; then
     shopt -s checkwinsize
-    PS1="[\u@\h \W]\\$ "
+    PS1='[\u@\h \W]\\$ '
 else
     return
 fi
@@ -46,12 +46,11 @@ alias tree='tree -Cs'        # nice alternative to 'ls'
 alias ll='ls -l'             # long listing
 alias l='ls'                 # quick listing
 alias lsd='ls -l | grep "^d"'   #list only directories
-# alias l?='cat /home/will/technical/tips/ls'
-alias l.="ls -ldA .*"
+alias l.='ls -ldA .*'
 
 
 # directories aliases
-alias ..="cd .."
+alias ..='cd ..'
 alias home='cd ~/'
 alias scratch='cd ~/scratch'
 alias thesis='cd ~/thesis'
@@ -67,28 +66,29 @@ alias dotfiles='cd ~/dotfiles'
 
 
 # general aliases
-alias em="emacs -nw"
-alias findhere="find . -mindepth 1 -maxdepth 1"
-alias findupto="find . -mindepth 1 -maxdepth"
-alias grep="grep --color=auto"
-alias mp="ps --forest -alu ${USER}"
-alias pf="pathfind PATH"
-alias pfa="pathfind -a PATH"
+alias em='emacs -nw'
+alias findhere='find . -mindepth 1 -maxdepth 1'
+alias findupto='find . -mindepth 1 -maxdepth'
+alias grep='grep --color=auto'
+alias mp='ps --forest -alu ${USER}'
+alias pf='pathfind PATH'
+alias pfa='pathfind -a PATH'
 
 
 # command substitutions
-alias ff='sudo find / -name $@'
+alias ff='sudo find / -name'
 alias df='df -h -x tmpfs -x usbfs'
-alias psg='ps -ef | grep $1'
-alias h='history | grep $1'
+alias psg='ps -ef | grep'
+alias h='history | grep'
 alias which='type -all'
 alias ..='cd ..'
-alias path='echo -e ${PATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\\n}"
 alias vi='vim'
 alias du='du -h'
 alias dutop='du -h --max-depth=1'
-alias man="LANG=C man"
-alias a2ps="LANG=fr_FR.ISO-8859-1 a2ps" # TODO: maybe not ISO-8859-1
+alias man='LANG=C man'
+alias a2ps='LANG=fr_FR.ISO-8859-1 a2ps'
+alias genv='env | grep -i'
 
 
 # makes directory then moves into it
@@ -133,7 +133,7 @@ aliasdir() { alias $1="cd ${2:-${PWD}}"; }
 
 
 # alias last command
-aliascmd() { x=$(history 2 | head -1 | sed "s/.\{7\}//"); alias $1="${x}"; }
+aliascmd() { x=$(history 2 | head -1 | sed 's/.\{7\}//'); alias $1="$x"; }
 
 
 # BSD specifics
