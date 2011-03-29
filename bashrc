@@ -156,6 +156,7 @@ fi
 
 # libraries configurations
 export LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH}
+export LUA_PATH="./?.lua;${PREFIX}/share/lua/5.1/?.lua;${PREFIX}/share/lua/5.1/?/init.lua;${PREFIX}/lib/lua/5.1/?.lua;${PREFIX}/lib/lua/5.1/?/init.lua;${HOME}/lib/lua/5.1/./?.lua;${HOME}/lib/lua/5.1/./?/init.lua;;"
 
 
 # other customization
