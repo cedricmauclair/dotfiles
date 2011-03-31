@@ -269,7 +269,7 @@
 
 (defcustom packages-to-load
   '("drag-stuff" "fic-mode" "filladapt" "gnuplot"
-    "gnuplot-gui" "lua-mode" "lua2-mode" "rainbow-mode"
+    "gnuplot-gui" "lua-mode" "rainbow-mode"
     "textmate")
   "List of packages to load automatically."
   :type '(repeat string)
@@ -328,7 +328,7 @@
 ;<< -- lua-mode      ---------------------------------------------- >>
 
 (when (require 'lua-mode nil t)
-  ; (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-to-list 'auto-mode-alist '("\\.mlua$" . lua-mode))
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
