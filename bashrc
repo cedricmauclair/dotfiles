@@ -73,6 +73,7 @@ alias grep='grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
 alias pf='pathfind PATH'
 alias pfa='pathfind -a PATH'
+alias context='source ${PREFIX}/context-minimals/tex/setuptex'
 
 
 # command substitutions
@@ -157,6 +158,7 @@ fi
 # libraries configurations
 export LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH}
 export LUA_PATH="./?.lua;${PREFIX}/share/lua/5.1/?.lua;${PREFIX}/share/lua/5.1/?/init.lua;${PREFIX}/lib/lua/5.1/?.lua;${PREFIX}/lib/lua/5.1/?/init.lua;${HOME}/lib/lua/5.1/./?.lua;${HOME}/lib/lua/5.1/./?/init.lua;;"
+export LUA_CPATH="./?.so;${PREFIX}/lib/lua/5.1/?.so;${PREFIX}/lib/lua/5.1/loadall.so;${HOME}/lib/lua/5.1/?.so;;"
 
 
 # other customization
