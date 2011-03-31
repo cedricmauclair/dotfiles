@@ -66,6 +66,7 @@ alias dotfiles='cd ~/dotfiles'
 
 
 # general aliases
+alias setuptex='source ${CONTEXT}/tex/setuptex'
 alias em='emacs -nw'
 alias findhere='find . -mindepth 1 -maxdepth 1'
 alias findupto='find . -mindepth 1 -maxdepth'
@@ -73,7 +74,6 @@ alias grep='grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
 alias pf='pathfind PATH'
 alias pfa='pathfind -a PATH'
-alias setuptex='source ${PREFIX}/context-minimals/tex/setuptex'
 
 
 # command substitutions
@@ -162,6 +162,9 @@ export LUA_CPATH="./?.so;${PREFIX}/lib/lua/5.1/?.so;${PREFIX}/lib/lua/5.1/loadal
 
 
 # other customization
+
+
+# clean-up
 unset MAIL
 
 

@@ -9,6 +9,18 @@ pathmunge () {
     fi
 }
 
+munge () {
+    if ! echo \$$1 | egrep -q "(^|:)$2($|:)" ; then
+       if [ "$3" = "after" ] ; then
+          eval $1=\$$1:$2
+       elif [ "$3" = "export" ] ; then
+          eval export $1=\$$1:$2
+       else
+          eval $1=$2:\$$1
+       fi
+    fi
+}
+
 
 # no core files by default
 ulimit -S -c 0 >/dev/null 2>&1
@@ -17,7 +29,7 @@ ulimit -S -c 0 >/dev/null 2>&1
 # history configurations
 export HISTSIZE=2000
 export HISTFILESIZE=2000
-export HISTIGNORE="cd:ls"
+export HISTIGNORE=cd:ls
 export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
@@ -25,17 +37,17 @@ set show-all-if-ambiguous on
 
 
 # additions to the ``PATH''
-export PREFIX=/opt
-export TEXLIVE=/opt/texlive
-
 if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-    PREFIX=/DATA/usr/local
-    TEXLIVE=/DATA/texlive
+    export PREFIX=/DATA/usr/local
+    export TEXLIVE=/DATA/texlive/2010
+    export CONTEXT=/DATA/context-minimals
+elif [ "$(uname)" = "Darwin" ]; then
+    export PREFIX=/opt
+    export TEXLIVE=${PREFIX}/texlive/2010
+    export CONTEXT=/opt/context-minimals
 fi
 
-[ -d "/DATA/texlive/2010/bin/i386-linux" ] && pathmunge /DATA/texlive/2010/bin/i386-linux
-[ -d "/DATA/opt/google/chrome" ]           && pathmunge /DATA/opt/google/chrome
-
+[ -d "${TEXLIVE}/bin/i386-linux" ] && pathmunge ${TEXLIVE}/bin/i386-linux
 [ -d "${PREFIX}/bin" ]     && pathmunge ${PREFIX}/bin
 [ -d "${PREFIX}/scripts" ] && pathmunge ${PREFIX}/scripts
 [ -d "${HOME}/bin" ]       && pathmunge ${HOME}/bin
@@ -57,22 +69,21 @@ export DVIVIEWER=xdvi
 
 export EDITOR=vim
 export VISUAL=view
-export PAGER=most
 
-export OSFONTDIR=${HOME}/.fonts:/DATA/texlive/texmf-local/fonts:/DATA/texlive/2010/texmf-dist/fonts:/usr/share/fonts
+export OSFONTDIR=${HOME}/.fonts:${TEXLIVE}/../texmf-local/fonts:${TEXLIVE}/texmf-dist/fonts:/usr/share/fonts
 
 
 # libraries configurations
-if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-    export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
-    export PYTHONPATH=${PREFIX}/lib/python2.6/site-packages
-    export PERL5LIB=${PREFIX}/lib/perl5/site_perl/5.12.3:${PERL5LIB}
-fi
+[ -d "${PREFIX}/lib/pkgconfig" ] && munge PKG_CONFIG_PATH ${PREFIX}/lib/pkgconfig
+[ -d "${PREFIX}/lib/python2.6" ] && munge PYTHONPATH ${PREFIX}/lib/python2.6/site-packages
+[ -d "${PREFIX}/lib/perl5" ]     && munge PERL5LIB ${PREFIX}/lib/perl5/site_perl/5.12.3
 
 
 # Platform specific settings
 if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
     export TERM=rxvt-unicode-256color
+    export PAGER=most
+    [ -d "/DATA/opt/google/chrome" ] && pathmunge /DATA/opt/google/chrome
 elif [ "$(uname)" = "Darwin" ]; then
     export TERM=rxvt
     export PAGER=less
@@ -81,6 +92,7 @@ fi
 
 # clean-up
 unset pathmunge
+unset munge
 
 
 # some more definitions
