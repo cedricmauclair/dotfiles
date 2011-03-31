@@ -73,7 +73,7 @@ alias grep='grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
 alias pf='pathfind PATH'
 alias pfa='pathfind -a PATH'
-alias context='source ${PREFIX}/context-minimals/tex/setuptex'
+alias setuptex='source ${PREFIX}/context-minimals/tex/setuptex'
 
 
 # command substitutions
