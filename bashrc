@@ -91,6 +91,8 @@ alias dutop='du -h --max-depth=1'
 alias man='LANG=C man'
 alias a2ps='LANG=fr_FR.ISO-8859-1 a2ps'
 alias genv='env | grep -i'
+alias gpg=gpg2
+alias pgp=gpg2
 
 
 # makes directory then moves into it
