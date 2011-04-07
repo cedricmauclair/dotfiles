@@ -93,6 +93,7 @@ alias a2ps='LANG=fr_FR.ISO-8859-1 a2ps'
 alias genv='env | grep -i'
 alias gpg=gpg2
 alias pgp=gpg2
+alias metapost='PATH=/DATA/sources/metapost-beta-1.503/build/texk/{web2c,kpathsea}:$PATH mpost'
 
 
 # makes directory then moves into it
