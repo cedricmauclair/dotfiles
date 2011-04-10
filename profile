@@ -44,7 +44,7 @@ if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
 elif [ "$(uname)" = "Darwin" ]; then
     export PREFIX=/opt
     export TEXLIVE=${PREFIX}/texlive/2010
-    export CONTEXT=/opt/context-minimals
+    export CONTEXT=${PREFIX}/context-minimals
 fi
 
 [ -d "${TEXLIVE}/bin/i386-linux" ] && pathmunge ${TEXLIVE}/bin/i386-linux
