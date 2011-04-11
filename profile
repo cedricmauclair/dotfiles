@@ -74,10 +74,10 @@ export OSFONTDIR=${HOME}/.fonts:${TEXLIVE}/../texmf-local/fonts:${TEXLIVE}/texmf
 
 
 # libraries configurations
-[ -d "${PREFIX}/lib/pkgconfig" ] && munge PKG_CONFIG_PATH ${PREFIX}/lib/pkgconfig
+[ -d "${PREFIX}/lib/pkgconfig" ] && munge PKG_CONFIG_PATH ${PREFIX}/lib/pkgconfig 
 [ -d "${PREFIX}/lib/python2.6" ] && munge PYTHONPATH ${PREFIX}/lib/python2.6/site-packages
 [ -d "${PREFIX}/lib/perl5" ]     && munge PERL5LIB ${PREFIX}/lib/perl5/site_perl/5.12.3
-
+export PKG_CONFIG_PATH PYTHONPATH PERL5LIB
 
 # Platform specific settings
 if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
