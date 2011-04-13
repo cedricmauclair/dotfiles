@@ -524,10 +524,17 @@
       (add-hook 'etexshow-mode-hook
                 '(lambda () (local-set-key (kbd "<f7>") 'etexshow-quit))))
 
-    (local-set-key (kbd "C-c C-c") nil)
+    ; (local-set-key (kbd "C-c C-c") nil)
     (local-set-key (kbd "C-c C-c")
                    (lambda ()
                      (interactive) (save-buffer) (my:compile "make -k")))
+    (local-set-key (kbd "C-c C-v")
+                   (lambda ()
+                     (interactive)
+                     (save-buffer)
+                     (async-shell-command
+                      (concat "make -C.. "
+                              (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))))
 
     ; insert strings in the buffer)
     (local-set-key (kbd "C-c i")   nil)
@@ -1159,6 +1166,8 @@ in that cyclic order."
 (global-set-key (kbd "C-c t i") 'overwrite-mode)
 (global-set-key (kbd "C-c t d") 'my:dark-theme)
 (global-set-key (kbd "C-c t l") 'my:light-theme)
+(global-set-key (kbd "C-x C-<left>")  'winner-undo)
+(global-set-key (kbd "C-x C-<right>") 'winner-redo)
 
 (global-set-key (kbd "<S-f4>")
   (lambda nil (interactive) (my:launch-terminal explicit-shell-file-name)))
