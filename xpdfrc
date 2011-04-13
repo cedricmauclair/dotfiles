@@ -5,7 +5,7 @@ fontDir        ~/.fonts
 
 #### PostScript output control
 
-psFile          "|lp -drsi"
+psFile          "|lp -oraw -dri"
 psPaperSize     A4
 initialZoom     page
 continuousView  no
