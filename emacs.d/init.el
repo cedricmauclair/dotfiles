@@ -1265,9 +1265,8 @@ found there."
         (delim-kill-it (+ from 1) (- to 1) save)
       (message "Not found!"))))
 
-  (global-set-key (kbd "M-'") nil)     ; was `back-to-indentation'
-  (global-set-key (kbd "M-' M-i") nil)
-  (global-set-key (kbd "M-' M-a") nil)
+  (global-set-key (kbd "M-«") nil)
+  (global-set-key (kbd "M-»") nil)
 
   (defvar prefix)
   (defun my:set-keys (func from to)
@@ -1276,8 +1275,8 @@ found there."
     (eval `(global-set-key (kbd ,(concat prefix (char-to-string to)))
       (lambda (save) (interactive "P") (,func ,from ,to (point) save)))))
 
-  (dolist (elt '(("M-' M-a " . delim-kill)
-                 ("M-' M-i " . delim-kill-inside)))
+  (dolist (elt '(("M-» " . delim-kill)
+                 ("M-« " . delim-kill-inside)))
     (setq prefix (car elt))
     (my:set-keys (cdr elt) ?\( ?\))
     (my:set-keys (cdr elt) ?{ ?})
