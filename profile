@@ -84,6 +84,7 @@ if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
     export TERM=rxvt-unicode-256color
     export PAGER=most
     [ -d "/DATA/opt/google/chrome" ] && pathmunge /DATA/opt/google/chrome
+    export RSYNC_CONNECT_PROG="ssh home nc %H 873"
 elif [ "$(uname)" = "Darwin" ]; then
     export TERM=rxvt
     export PAGER=less
