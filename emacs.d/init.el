@@ -1283,8 +1283,8 @@ found there."
 
   (dolist (elt '(("M-» " . delim-kill)
                  ("M-« " . delim-kill-inside)))
-    (setq prefix (car elt))
-    (setq pprefix (concat (car elt) (car elt)))
+    (setq pprefix (car elt))
+    (setq prefix (concat (car elt) (car elt)))
     (my:set-keys (cdr elt) ?\( ?\))
     (my:set-keys (cdr elt) ?{ ?})
     (my:set-keys (cdr elt) ?[ ?])
