@@ -34,10 +34,10 @@ urxvt*perl-ext-common:    default,matcher,tabbed
 !! urxvt*color14:    rgb:71/be/be
 !! urxvt*color15:    rgb:ff/ff/ff
 
-#define S_base03  #002b36
-#define S_base02  #073642
+#define S_base00  grey65
 #define S_base01  #586e75
-#define S_base00  #657b83
+#define S_base02  #073642
+#define S_base03  grey10
 #define S_base0   #839496
 #define S_base1   #93a1a1
 #define S_base2   #eee8d5
@@ -54,13 +54,13 @@ urxvt*perl-ext-common:    default,matcher,tabbed
 urxvt*background:            S_base03
 urxvt*foreground:            S_base00
 urxvt*fadeColor:             S_base03
-urxvt*cursorColor:           S_base1
+urxvt*cursorColor:           S_green
 urxvt*pointerColorBackground:S_base01
 urxvt*pointerColorForeground:S_base1
 
-urxvt*color0:  S_base02
+urxvt*color0:  S_base03
 urxvt*color8:  S_base03
-urxvt*color1:  S_orange
+urxvt*color1:  S_green
 urxvt*color9:  S_orange
 urxvt*color2:  S_green
 urxvt*color10: S_base01
