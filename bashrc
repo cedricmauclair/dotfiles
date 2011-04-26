@@ -59,9 +59,9 @@ alias documents='cd ~/documents'
 alias downloads='cd ~/downloads'
 alias pictures='cd ~/pictures'
 alias images='cd ~/pictures'
-alias sources='cd /DATA/sources'
+alias sources="cd ${PREFIX}/sources"
 alias acmetex='cd ~/documents/acmetex'
-alias gitrepos='cd /DATA/gitrepos/cmauclai'
+alias gitrepos="cd ${PREFIX}/gitrepos/cmauclai"
 alias dotfiles='cd ~/dotfiles'
 alias lua-libs='cd ~/tools/lua-libs'
 
