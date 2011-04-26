@@ -33,7 +33,7 @@ export HISTIGNORE=cd:ls
 export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
-set show-all-if-ambiguous on
+# set show-all-if-ambiguous on
 
 
 # additions to the ``PATH''
@@ -45,6 +45,10 @@ elif [ "$(uname)" = "Darwin" ]; then
     export PREFIX=/opt
     export TEXLIVE=${PREFIX}/texlive/2010
     export CONTEXT=${PREFIX}/context-minimals
+else
+    export PREFIX=/opt
+    export TEXLIVE=${PREFIX}/texlive/2010
+    export CONTEXT=${PREFIX}/context
 fi
 
 [ -d "${TEXLIVE}/bin/i386-linux" ] && pathmunge ${TEXLIVE}/bin/i386-linux
@@ -88,6 +92,9 @@ if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
 elif [ "$(uname)" = "Darwin" ]; then
     export TERM=rxvt
     export PAGER=less
+else
+    export TERM=rxvt-unicode-256color
+    export PAGER=most
 fi
 
 
@@ -98,3 +105,4 @@ unset munge
 
 # some more definitions
 source ${HOME}/.bashrc
+
