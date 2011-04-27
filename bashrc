@@ -148,10 +148,16 @@ fi
 
 
 # smart completion in shell
-if [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
-elif [ -f ${HOME}/.bash_completion ]; then
+if [ -f ${HOME}/.bash_completion ]; then
     source ${HOME}/.bash_completion
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
+
+if [ -d ${HOME}/.bash_completion.d ]; then
+    for comp in ${HOME}/.bash_completion.d/*; do
+        source ${comp} 2>/dev/null
+    done
 elif [ -d /etc/bash_completion.d ]; then
     for comp in /etc/bash_completion.d/*; do
         source ${comp} 2>/dev/null
