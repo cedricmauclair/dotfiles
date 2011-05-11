@@ -46,9 +46,12 @@ set completion-ignore-case on
 # reason prefix search feels much nicer.)  If I can't remember how to type a
 # specific command, I can just prefix search for its beginning, e.g. "ki"
 # reveals "kill -9 %1".
-"\e[A": history-search-backward
-"\e[B": history-search-forward
-"\eOA": history-search-backward
-"\eOB": history-search-forward
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
+# "\eOA": history-search-backward
+# "\eOB": history-search-forward
+"\ep": history-search-backward
+"\en": history-search-forward
+"\C-u": universal-argument
 
 $endif
