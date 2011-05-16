@@ -58,6 +58,7 @@ alias memoir='cd ~/memoir'
 alias documents='cd ~/documents'
 alias downloads='cd ~/downloads'
 alias pictures='cd ~/pictures'
+alias pics='cd ~/pictures'
 alias images='cd ~/pictures'
 alias sources="cd ${PREFIX}/sources"
 alias acmetex='cd ~/documents/acmetex'
@@ -65,12 +66,16 @@ alias gitrepos="cd ${PREFIX}/gitrepos/cmauclai"
 alias dotfiles='cd ~/dotfiles'
 alias lua-libs='cd ~/tools/lua-libs'
 
+if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
+  alias sources='cd /DATA/sources'
+fi
 
 # general aliases
 alias setuptex='source ${CONTEXT}/tex/setuptex'
 alias em='emacs -nw'
 alias findhere='find . -mindepth 1 -maxdepth 1'
 alias findupto='find . -mindepth 1 -maxdepth'
+alias fgrep='find . -type f -print0 | xargs --null grep'
 alias grep='grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
 alias pf='pathfind PATH'
