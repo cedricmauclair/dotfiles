@@ -181,6 +181,7 @@
  '(kill-read-only-ok t)
  '(kill-whole-line t)
  '(menu-bar-mode nil)
+ '(mouse-drag-copy-region t)
  '(msb-files-by-directory nil)
  '(msb-menu-cond (quote (((and (boundp (quote server-buffer-clients)) server-buffer-clients (quote multi)) 3030 "Clients (%d)") ((and msb-display-invisible-buffers-p (msb-invisible-buffer-p) (quote multi)) 3090 "Invisible buffers (%d)") ((eq major-mode (quote dired-mode)) 2010 "Dired (%d)" msb-dired-item-handler msb-sort-by-directory) ((eq major-mode (quote Man-mode)) 4090 "Manuals (%d)") ((eq major-mode (quote w3-mode)) 4020 "WWW (%d)") ((or (memq major-mode (quote (rmail-mode rmail-edit-mode vm-summary-mode vm-mode mail-mode))) (memq major-mode (quote (mh-letter-mode mh-show-mode mh-folder-mode))) (memq major-mode (quote (gnus-summary-mode message-mode gnus-group-mode gnus-article-mode score-mode gnus-browse-killed-mode)))) 4010 "Mail (%d)") ((not buffer-file-name) 4099 "Buffers (%d)") ((quote no-multi) 1099 "Files (%d)"))))
  '(msb-mode t)
