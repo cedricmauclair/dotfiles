@@ -242,7 +242,19 @@
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil
                 :strike-through nil :overline nil :underline nil
                 :slant normal :weight normal :height 80 :width normal
-                :foundry "unknown" :family "DejaVu Sans Mono")))))
+                :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#93e0e3"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "#f0dfaf"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "#cc9393"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "#7f9f7f"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "#dfaf8f"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "#7cb8bb"))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "#bfebbf"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "#9c6363"))))
+ '(rainbow-delimiters-depth-9-face ((t (:foreground "#d0bf8f"))))
+ '(rainbow-delimiters-depth-10-face ((t (:foreground "#9fc59f"))))
+ '(rainbow-delimiters-depth-11-face ((t (:foreground "#94bff3"))))
+ '(rainbow-delimiters-depth-12-face ((t (:foreground "#8c5353")))))
 
 ;>> custom-set-faces ---------------------------------------------- >>
 
@@ -266,12 +278,16 @@
 (when (require 'dired-x nil t)
   (add-hook 'dired-mode-hook 'dired-omit-mode))
 
+(when (require 'rainbow-delimiters nil t)
+  (add-hook 'find-file-hook 'rainbow-delimiters-mode))
+
 ;>> enable some goodies (end) ------------------------------------- >>
 ;<< -- load some packages     ------------------------------------- >>
 
 (defcustom packages-to-load
   '("drag-stuff" "fic-mode" "filladapt" "gnuplot"
-    "gnuplot-gui" "lua-mode" "rainbow-mode" "textmate")
+    "gnuplot-gui" "lua-mode" "rainbow-mode" "rainbow-delimiters"
+    "textmate")
   "List of packages to load automatically."
   :type '(repeat string)
   :group 'acme)
