@@ -110,7 +110,7 @@
  '(current-language-environment "UTF-8")
  '(custom-buffer-done-kill t)
  '(custom-group-tag-faces nil)
- '(custom-safe-themes (quote ("0aecc3bccb8f1cc1847a10edc88493e0347dc839" "10fa3584b0ff1fc145c5ce88d9b290b490c75a1c" "ff45ca47342fc01aecd25a4526a918aba03bf4ce" "a3b69ce66b64b5a13865c495168011382c040c7e" "48b99c0a71f0b2b237f9638f07807936b87bf4de" default)))
+ '(custom-safe-themes (quote ("5600dc0bb4a2b72a613175da54edb4ad770105aa" "0174d99a8f1fdc506fa54403317072982656f127" "0aecc3bccb8f1cc1847a10edc88493e0347dc839" "10fa3584b0ff1fc145c5ce88d9b290b490c75a1c" "ff45ca47342fc01aecd25a4526a918aba03bf4ce" "a3b69ce66b64b5a13865c495168011382c040c7e" "48b99c0a71f0b2b237f9638f07807936b87bf4de" default)))
  '(default-input-method nil)
  '(delete-old-versions t)
  '(delete-selection-mode t)
@@ -239,10 +239,10 @@
 (make-face 'ibuffer-header-face)
 
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil
-                :strike-through nil :overline nil :underline nil
-                :slant normal :weight normal :height 80 :width normal
-                :foundry "unknown" :family "DejaVu Sans Mono"))))
+ ; '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil
+ ;                :strike-through nil :overline nil :underline nil
+ ;                :slant normal :weight normal :height 80 :width normal
+ ;                :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#93e0e3"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "#f0dfaf"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "#cc9393"))))

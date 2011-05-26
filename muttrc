@@ -1,0 +1,75 @@
+set realname  = 'Cédric Mauclair'
+set signature = ~/.signature
+
+# Onera account
+# ================================================
+
+# Hostname
+set hostname = onera.fr
+
+# PGP
+set pgp_decode_command       = 'gpg2 %?p?--passphrase-fd 0? --no-verbose --batch --output - %f'
+set pgp_verify_command       = 'gpg2 --no-verbose --batch --output - --verify %s %f'
+set pgp_decrypt_command      = 'gpg2 --passphrase-fd 0 --no-verbose --batch --output - %f'
+set pgp_sign_command         = 'gpg2 --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f'
+set pgp_clearsign_command    = 'gpg2 --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f'
+set pgp_encrypt_only_command = 'pgpewrap gpg2 --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f'
+set pgp_encrypt_sign_command = 'pgpewrap gpg2 --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f'
+set pgp_import_command       = 'gpg2 --no-verbose --import -v %f'
+set pgp_export_command       = 'gpg2 --no-verbose --export --armor %r'
+set pgp_verify_key_command   = 'gpg2 --no-verbose --batch --fingerprint --check-sigs %r'
+set pgp_list_pubring_command = 'gpg2 --no-verbose --batch --with-colons --list-keys %r'
+set pgp_list_secring_command = 'gpg2 --no-verbose --batch --with-colons --list-secret-keys %r'
+set pgp_autosign             = yes
+set pgp_sign_as              = 0xD4945B6A
+set pgp_replyencrypt         = yes
+set pgp_timeout              = 1800 # 30 minutes
+set pgp_good_sign            = '^gpg: Good signature from'
+
+# Headers
+hdr_order Date From To Cc
+my_hdr From: Cédric Mauclair <Cedric.Mauclair@onera.fr>
+my_hdr X-PGP-Key: http://aunezras.free.fr/pubkey.asc
+
+ignore 'Authentication-Results:'
+ignore 'DomainKey-Signature:'
+ignore 'DKIM-Signature:'
+unignore Date Message-ID In-Reply-To
+
+# Keep mails on server
+set move = no
+
+# IMAP over SSL
+set imap_user             = 'cmauclai'
+# set imap_pass             = # removed for security reasons
+set imap_authenticators   = login
+set imap_passive          = no
+set imap_check_subscribed = yes
+set imap_list_subscribed  = yes
+set imap_pipeline_depth   = 0
+
+# Folders
+set folder    = imap://cottos.onecert.fr/INBOX
+set spoolfile = +
+set record    = +Sent
+set postponed = +Drafts
+
+# SMTP
+set smtp_url = smtp://cottos.onecert.fr
+
+# Cache datas
+set header_cache     = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+# Miscellaneous
+set mail_check        = 5
+set timeout           = 10
+set sort              = 'threads'
+set sort_aux          = 'last-date-received'
+set editor            = 'emacsclient -c -a emacs'
+set pager_index_lines = 10
+set query_command     = "lbdbq '%s'"
+
+# Colors
+source ~/dotfiles/solarized/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
