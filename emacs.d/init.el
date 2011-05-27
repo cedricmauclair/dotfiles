@@ -239,10 +239,10 @@
 (make-face 'ibuffer-header-face)
 
 (custom-set-faces
- ; '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil
- ;                :strike-through nil :overline nil :underline nil
- ;                :slant normal :weight normal :height 80 :width normal
- ;                :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil
+                :strike-through nil :overline nil :underline nil
+                :slant normal :weight normal :height 80 :width normal
+                :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#93e0e3"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "#f0dfaf"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "#cc9393"))))
@@ -1181,10 +1181,13 @@ in that cyclic order."
 
 ; personnal keybindings
 (global-set-key (kbd "C-c t")   nil) ; make it a prefix
+(global-set-key (kbd "C-c s")   nil) ; make it a prefix
 (global-set-key (kbd "C-c t m") 'menu-bar-mode)
 (global-set-key (kbd "C-c t i") 'overwrite-mode)
-(global-set-key (kbd "C-c t d") 'my:dark-theme)
-(global-set-key (kbd "C-c t l") 'my:light-theme)
+(global-set-key (kbd "C-c t d") 'my:acme-dark-theme)
+(global-set-key (kbd "C-c t l") 'my:acme-light-theme)
+(global-set-key (kbd "C-c s d") 'my:solarized-dark-theme)
+(global-set-key (kbd "C-c s l") 'my:solarized-light-theme)
 (global-set-key (kbd "C-x C-<left>")  'winner-undo)
 (global-set-key (kbd "C-x C-<right>") 'winner-redo)
 
@@ -1199,15 +1202,25 @@ in that cyclic order."
 ;>> personnal keybindings (end) ----------------------------------- >>
 ;<< -- themes                -------------------------------------- >>
 
-(defun my:dark-theme ()
+(defun my:acme-dark-theme ()
   "Changes the theme to a dark one."
   (interactive)
   (load-theme 'acme-dark))
 
-(defun my:light-theme ()
+(defun my:acme-light-theme ()
   "Changes the theme to a light one."
   (interactive)
   (load-theme 'acme-light))
+
+(defun my:solarized-dark-theme ()
+  "Changes the theme to a dark one."
+  (interactive)
+  (load-theme 'solarized-dark))
+
+(defun my:solarized-light-theme ()
+  "Changes the theme to a light one."
+  (interactive)
+  (load-theme 'solarized-light))
 
 ;>> themes (end) -------------------------------------------------- >>
 ;<< -- compilation buffer    -------------------------------------- >>
