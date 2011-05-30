@@ -86,7 +86,6 @@ urxvt*inheritPixmap:      true
 urxvt*reverseVideo:       false
 urxvt*tintColor:          S_base2
 urxvt*shading:            20 !trans=100, 0=opaque
-urxvt*fading:             10 !term unfocus
 urxvt*font:               xft:Bitstream Vera Sans Mono-8
 urxvt*scrollBar:          false
 urxvt*urlLauncher:        google-chrome
@@ -96,7 +95,7 @@ urxvt*skipBuiltinGlyphs:  true
 urxvt*transparent:        true
 urxvt*perl-ext-common:    default,matcher,tabbed
 
-urxvt*background:            S_base03
+urxvt*background:            S_base02
 urxvt*foreground:            S_base00
 urxvt*fading:                40
 urxvt*fadeColor:             S_base03
@@ -105,11 +104,11 @@ urxvt*pointerColorBackground:S_base01
 urxvt*pointerColorForeground:S_base1
 
 !! black dark/light
-urxvt*color0:                S_base02
+urxvt*color0:                S_base03
 urxvt*color8:                S_base03
 
 !! red dark/light
-urxvt*color1:                S_red
+urxvt*color1:                S_green
 urxvt*color9:                S_orange
 
 !! green dark/light
@@ -138,8 +137,11 @@ urxvt*color15:               S_base3
 
 
 ! emacs (to speed up things a bit)
-emacs*geometry:           115x69+0+0
-emacs*font:               DejaVu Sans Mono-8
-emacs*fontbackend:        xft
+emacs*geometry:       115x69+0+0
+emacs*font:           DejaVu Sans Mono-8
+emacs*fontbackend:    xft
+emacsclient*geometry: 115x69+0+0
 
-emacsclient*geometry:     115x69+0+0
+! gvim
+Vim.geometry: 120x69+0+0
+

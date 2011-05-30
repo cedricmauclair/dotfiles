@@ -83,10 +83,10 @@ set laststatus=2
 " Options de recherche {{{2
 
 " Tout ce qui concerne la recherche. Incrémentale
-" avec un highlight. Elle prend en compte la
+" avec un highlight. Elle ne prend pas en compte la
 " différence entre majuscule/minuscule.
 set incsearch
-set noignorecase
+set ignorecase
 set infercase
 
 " Quand la rechercher atteint la fin du fichier, pas
@@ -136,12 +136,14 @@ set ttyfast
 " quand un script vim est entrain de faire une opération
 set lazyredraw
 
+map <S-Insert> <MiddleMouse>
+
 if has("gui_running")
 	map <S-Insert> <MiddleMouse>
 	map <S-Insert> <MiddleMouse>
 
 	set mousehide " On cache la souris en mode gui
-	set ch=2 " ligne de commande dans deux ligne
+	" set ch=2 " ligne de commande dans deux ligne
 endif
 
 " }}}2
@@ -161,8 +163,8 @@ set isfname-==
 " Autocmd {{{1
 
 set cindent
-"set autoindent
-"set smartindent
+set autoindent
+set smartindent
 
 if has("autocmd")
 	" Détection auto du format
@@ -180,19 +182,19 @@ if has("autocmd")
 		\   exe "normal g`\"" |
 		\ endif
 
-        " La valeur des tabs par défaut
-        autocmd BufNewFile,BufRead * call ChangeTabSize(2, 1)
+    " La valeur des tabs par défaut
+    autocmd BufNewFile,BufRead * call ChangeTabSize(2, 1)
 
 		" Ne pas faire de wrap dans les fichiers ChangeLog
 		autocmd BufNewFile,BufRead ChangeLog set nowrap textwidth=0
 		autocmd BufNewFile,BufRead ChangeLog call ChangeTabSize(8, 0)
 
-        " PKGBUILD
+    " PKGBUILD
 		autocmd BufNewFile,BufRead PKGBUILD set syntax=sh
     augroup END " }}}2
 
     augroup pdf " {{{2
-        au!
+    au!
 		autocmd BufReadPre *.pdf set ro
 		autocmd BufReadPost *.pdf %!pdftotext -nopgbrk "%" - | fmt -csw78
     augroup END " }}}2
@@ -263,6 +265,7 @@ imap <C-w> <Esc><C-w>
 map <tab> gt
 
 " Cacher le menu
+map ,mm :set guioptions=aegimrLtT<cr>
 map ,m :set guioptions=+M<cr>
 
 " Mode normal
@@ -328,5 +331,13 @@ let g:tex_flavor='latex'
 
 " }}}1
 
+
+" Couleurs {{{1
+
+syntax enable
+set background=light
+colorscheme solarized
+
+" }}}1
 
 " vim:ai:et:sw=4:ts=4:sts=4:tw=78:fenc=utf-8:foldmethod=marker
