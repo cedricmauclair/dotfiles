@@ -329,6 +329,8 @@ filetype indent on
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+let g:Tex_MultipleCompileFormats='dvi,pdf'
+
 " }}}1
 
 
@@ -339,5 +341,8 @@ set background=light
 colorscheme solarized
 
 " }}}1
+
+map <C-c> :w<cr> \ll
+imap <C-c> <Esc> :w<cr> \ll
 
 " vim:ai:et:sw=4:ts=4:sts=4:tw=78:fenc=utf-8:foldmethod=marker
