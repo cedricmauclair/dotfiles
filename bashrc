@@ -9,7 +9,7 @@ fi
 # are we an interactive shell?
 if [ "${PS1}" ]; then
     shopt -s checkwinsize
-    PS1='[\u@\h \W]\\$ '
+    PS1='[\u@\h \W]$(__git_ps1) \\$ '
 else
     return
 fi
