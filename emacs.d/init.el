@@ -1326,3 +1326,6 @@ found there."
     (my:set-keys (cdr elt) ?' ?')))
 
 ;>> delimiters (end) ---------------------------------------------- >>
+
+(require 'find-dired)
+(setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
