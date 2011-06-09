@@ -110,7 +110,7 @@
  '(current-language-environment "UTF-8")
  '(custom-buffer-done-kill t)
  '(custom-group-tag-faces nil)
- '(custom-safe-themes (quote ("5600dc0bb4a2b72a613175da54edb4ad770105aa" "0174d99a8f1fdc506fa54403317072982656f127" "0aecc3bccb8f1cc1847a10edc88493e0347dc839" "10fa3584b0ff1fc145c5ce88d9b290b490c75a1c" "ff45ca47342fc01aecd25a4526a918aba03bf4ce" "a3b69ce66b64b5a13865c495168011382c040c7e" "48b99c0a71f0b2b237f9638f07807936b87bf4de" default)))
+ '(custom-safe-themes (quote ("1e72fa53a2269a0b8dd2f63ec51d6a11ba59c1ab" "331f5c6d8c77bcb4370fcd5fa4e2287b9e7a5322" "5600dc0bb4a2b72a613175da54edb4ad770105aa" "0174d99a8f1fdc506fa54403317072982656f127" "0aecc3bccb8f1cc1847a10edc88493e0347dc839" "10fa3584b0ff1fc145c5ce88d9b290b490c75a1c" "ff45ca47342fc01aecd25a4526a918aba03bf4ce" "a3b69ce66b64b5a13865c495168011382c040c7e" "48b99c0a71f0b2b237f9638f07807936b87bf4de" default)))
  '(default-input-method nil)
  '(delete-old-versions t)
  '(delete-selection-mode t)
@@ -239,22 +239,24 @@
 (make-face 'ibuffer-header-face)
 
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil
-                :strike-through nil :overline nil :underline nil
-                :slant normal :weight normal :height 80 :width normal
-                :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(rainbow-delimiters-depth-1-face ((t (:foreground "#93e0e3"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "#f0dfaf"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "#cc9393"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "#7f9f7f"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "#dfaf8f"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "#7cb8bb"))))
- '(rainbow-delimiters-depth-7-face ((t (:foreground "#bfebbf"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "#9c6363"))))
- '(rainbow-delimiters-depth-9-face ((t (:foreground "#d0bf8f"))))
- '(rainbow-delimiters-depth-10-face ((t (:foreground "#9fc59f"))))
- '(rainbow-delimiters-depth-11-face ((t (:foreground "#94bff3"))))
- '(rainbow-delimiters-depth-12-face ((t (:foreground "#8c5353")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ ;; '(rainbow-delimiters-depth-1-face ((t (:foreground "#93e0e3"))))
+ ;; '(rainbow-delimiters-depth-10-face ((t (:foreground "#9fc59f"))) t)
+ ;; '(rainbow-delimiters-depth-11-face ((t (:foreground "#94bff3"))) t)
+ ;; '(rainbow-delimiters-depth-12-face ((t (:foreground "#8c5353"))) t)
+ ;; '(rainbow-delimiters-depth-2-face ((t (:foreground "#f0dfaf"))))
+ ;; '(rainbow-delimiters-depth-3-face ((t (:foreground "#cc9393"))))
+ ;; '(rainbow-delimiters-depth-4-face ((t (:foreground "#7f9f7f"))))
+ ;; '(rainbow-delimiters-depth-5-face ((t (:foreground "#dfaf8f"))))
+ ;; '(rainbow-delimiters-depth-6-face ((t (:foreground "#7cb8bb"))))
+ ;; '(rainbow-delimiters-depth-7-face ((t (:foreground "#bfebbf"))))
+ ;; '(rainbow-delimiters-depth-8-face ((t (:foreground "#9c6363"))))
+ ;; '(rainbow-delimiters-depth-9-face ((t (:foreground "#d0bf8f"))))
+ )
 
 ;>> custom-set-faces ---------------------------------------------- >>
 
@@ -1329,3 +1331,4 @@ found there."
 
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+

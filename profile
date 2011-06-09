@@ -51,6 +51,7 @@ else
     export CONTEXT=${PREFIX}/context
 fi
 
+# Last takes precedence
 [ -d "${TEXLIVE}/bin/i386-linux" ] && pathmunge ${TEXLIVE}/bin/i386-linux
 [ -d "${PREFIX}/bin" ]     && pathmunge ${PREFIX}/bin
 [ -d "${PREFIX}/scripts" ] && pathmunge ${PREFIX}/scripts
