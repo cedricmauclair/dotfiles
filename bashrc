@@ -109,9 +109,10 @@ function mkcdr {
 
 
 # creates an archive from given directory
-mktar() { tar cvf  "${1%%/}.tar" "${1%%/}/"; }
-mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}/"; }
-mktbz() { tar cvjf "${1%%/}.tbz" "${1%%/}/"; }
+mktar() { tar cvf  "${1%%/}.tar" "${1%%/}"; }
+mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}"; }
+mktbz() { tar cvjf "${1%%/}.tbz" "${1%%/}"; }
+mkzip() { zip -r   "${1%%/}"     "${1%%/}"; }
 
 
 # easy extract
