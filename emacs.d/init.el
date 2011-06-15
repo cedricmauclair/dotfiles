@@ -36,7 +36,7 @@
 (add-to-list 'custom-theme-load-path themes-root)
 
 (defconst more-lisp-dirs
-  (list "auctex" "etexshow")
+  (list "auctex" "etexshow" "google-maps")
   "List of directories to add to the load path, relative to
     `lisp-root' or absolute.")
 
@@ -1332,3 +1332,4 @@ found there."
 (require 'find-dired)
 (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
 
+(require 'google-maps)

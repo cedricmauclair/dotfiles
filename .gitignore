@@ -13,3 +13,4 @@ emacs.d/backup
 emacs.d/backup/*
 emacs.d/auto-save/list
 emacs.d/auto-save-list/*
+emacs.d/url/*
