@@ -95,7 +95,7 @@ elif [ "$(uname)" = "Darwin" ]; then
     export TERM=rxvt
     export PAGER=less
 else
-    export TERM=rxvt-unicode-256color
+    # export TERM=rxvt-unicode-256color
     export PAGER=most
 fi
 
