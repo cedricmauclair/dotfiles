@@ -1,3 +1,1 @@
-(require 'solarized-definitions)
-
-(create-solarized-theme dark)
+../solarized/solarized-dark-theme.el

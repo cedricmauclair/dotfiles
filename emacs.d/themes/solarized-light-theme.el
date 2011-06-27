@@ -1,3 +1,1 @@
-(require 'solarized-definitions)
-
-(create-solarized-theme light)
+../solarized/solarized-light-theme.el
