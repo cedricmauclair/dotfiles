@@ -1,0 +1,1 @@
+/udd/deri/cmauclai/.vim/solarized/doc/solarized.txt
