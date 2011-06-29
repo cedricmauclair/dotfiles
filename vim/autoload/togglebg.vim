@@ -1,1 +1,1 @@
-/udd/deri/cmauclai/.vim/solarized/autoload/togglebg.vim
+../solarized/autoload/togglebg.vim
