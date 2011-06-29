@@ -1,1 +1,1 @@
-/udd/deri/cmauclai/.vim/solarized/colors/solarized.vim
+../solarized/colors/solarized.vim
