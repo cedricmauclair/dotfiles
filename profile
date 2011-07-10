@@ -33,38 +33,21 @@ export HISTIGNORE=cd:ls
 export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
-# set show-all-if-ambiguous on
 
-
-# additions to the ``PATH''
-if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-    export PREFIX=/DATA/usr/local
-    export TEXLIVE=/DATA/texlive/2010
-    export CONTEXT=/DATA/context-minimals/current
-elif [ "$(uname)" = "Darwin" ]; then
-    export PREFIX=/opt
-    export TEXLIVE=${PREFIX}/texlive/2010
-    export CONTEXT=${PREFIX}/context-minimals
+# Useful variables
+if [ -f "~/.profile.prefix" ]; then
+    source ~/.profile.prefix
 else
-    export PREFIX=/opt
-    export TEXLIVE=${PREFIX}/texlive/2010
-    export CONTEXT=${PREFIX}/context
+    export PREFIX=~
 fi
+[ -d "${PREFIX}/texlive" ] && export TEXLIVE=${PREFIX}/texlive
+[ -d "${PREFIX}/context" ] && export CONTEXT=${PREFIX}/context
 
-# Last takes precedence
+
+# PATH additions, last takes precedence
 [ -d "${TEXLIVE}/bin/i386-linux" ] && pathmunge ${TEXLIVE}/bin/i386-linux
 [ -d "${PREFIX}/bin" ]     && pathmunge ${PREFIX}/bin
-[ -d "${PREFIX}/scripts" ] && pathmunge ${PREFIX}/scripts
 [ -d "${HOME}/bin" ]       && pathmunge ${HOME}/bin
-
-
-# proxy configurations
-if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-    export http_proxy=http://proxy.onecert.fr:80
-    export https_proxy=${http_proxy}
-    export ftp_proxy=${http_proxy}
-    export no_proxy=onera,cert.fr,onecert.fr,127.0.0.1
-fi
 
 
 # viewers/pager/editor configurations
@@ -78,26 +61,8 @@ export VISUAL=view
 export OSFONTDIR=${HOME}/.fonts:${TEXLIVE}/../texmf-local/fonts:${TEXLIVE}/texmf-dist/fonts:/usr/share/fonts
 
 
-# libraries configurations
-[ -d "${PREFIX}/lib/pkgconfig"   ] && munge PKG_CONFIG_PATH ${PREFIX}/lib/pkgconfig
-[ -d "${PREFIX}/share/pkgconfig" ] && munge PKG_CONFIG_PATH ${PREFIX}/share/pkgconfig
-[ -d "${PREFIX}/lib/python2.6"   ] && munge PYTHONPATH ${PREFIX}/lib/python2.6/site-packages
-[ -d "${PREFIX}/lib/perl5"       ] && munge PERL5LIB ${PREFIX}/lib/perl5/site_perl/5.12.3
-export PKG_CONFIG_PATH PYTHONPATH PERL5LIB
-
 # Platform specific settings
-if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-    export TERM=rxvt-unicode-256color
-    export PAGER=most
-    [ -d "/DATA/opt/google/chrome" ] && pathmunge /DATA/opt/google/chrome
-    export RSYNC_CONNECT_PROG="ssh home nc %H 873"
-elif [ "$(uname)" = "Darwin" ]; then
-    export TERM=rxvt
-    export PAGER=less
-else
-    # export TERM=rxvt-unicode-256color
-    export PAGER=most
-fi
+[ -f "~/.profile.$(hostname)" ] && source "~/.profile.$(hostname)"
 
 
 # clean-up
@@ -107,4 +72,6 @@ unset munge
 
 # some more definitions
 source ${HOME}/.bashrc
+
+startx && exit 0
 

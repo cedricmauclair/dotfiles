@@ -34,44 +34,42 @@ esac
 
 
 # some ls aliases TODO: use long version of options
-alias ls='ls -hX --color=auto --time-style=long-iso' # add colors for filetype recognition
-alias lx='ls -lXB'           # sort by extension
-alias lk='ls -lShr'          # list by size
-alias la='ls -A'             # show hidden files
-alias lla='ls -Al'           # show hidden files
-alias lr='ls -lR'            # recursice ls
-alias lt='ls -ltr'           # sort by date
-alias lm='ls -al |more'      # pipe through 'more'
-alias tree='tree -Cs'        # nice alternative to 'ls'
-alias ll='ls -l'             # long listing
-alias l='ls'                 # quick listing
-alias lsd='ls -l | grep "^d"'   #list only directories
-alias l.='ls -ldA .*'
+alias ls='ls --human-readable --color=auto --time-style=long-iso' # add colors for filetype recognition
+alias lx='ls -l --reverse -X'  # sort by extension
+alias lk='ls -l --reverse -S'  # list by size
+alias la='ls --almost-all'     # show hidden files
+alias lla='ls -l --almost-all' # show hidden files
+alias lr='ls -l --recursive'   # recursive ls
+alias lt='ls -l --reverse -t'  # sort by modification time
+alias lm='ls --all -l | more'  # pipe through 'more'
+alias ll='ls -l'               # long listing
+alias l='ls'                   # quick listing
+alias lsd='ls -l | grep "^d"'  #list only directories
+alias l.='ls -l --almost-all --directory .*'
 
 
 # directories aliases
 alias ..='cd ..'
-alias home='cd ~/'
-alias scratch='cd ~/scratch'
-alias thesis='cd ~/thesis'
-alias memoir='cd ~/memoir'
-alias documents='cd ~/documents'
-alias downloads='cd ~/downloads'
-alias pictures='cd ~/pictures'
-alias pics='cd ~/pictures'
-alias images='cd ~/pictures'
+alias ...='cd ../..'
+alias home='cd ${HOME}/'
+alias scratch='cd ${HOME}/scratch'
+alias thesis='cd ${HOME}/thesis'
+alias memoir='cd ${HOME}/memoir'
+alias documents='cd ${HOME}/documents'
+alias downloads='cd ${HOME}/downloads'
+alias pictures='cd ${HOME}/pictures'
+alias pics='cd ${HOME}/pictures'
+alias images='cd ${HOME}/pictures'
 alias sources="cd ${PREFIX}/sources"
-alias acmetex='cd ~/documents/acmetex'
+alias acmetex='cd ${HOME}/documents/acmetex'
 alias gitrepos="cd ${PREFIX}/gitrepos/cmauclai"
-alias dotfiles='cd ~/dotfiles'
-alias lua-libs='cd ~/tools/lua-libs'
+alias dotfiles='cd ${HOME}/dotfiles'
 
-if [ "${HOSTNAME#*.}" = "cert.fr" ]; then
-  alias sources='cd /DATA/sources'
-fi
 
 # general aliases
 alias setuptex='source ${CONTEXT}/tex/setuptex'
+alias current='source ${CONTEXT}/current/tex/setuptex'
+alias beta='source ${CONTEXT}/beta/tex/setuptex'
 alias em='emacs -nw'
 alias findhere='find . -mindepth 1 -maxdepth 1'
 alias findupto='find . -mindepth 1 -maxdepth'
@@ -79,33 +77,30 @@ alias fgrep='find . -type f -print0 | xargs --null grep'
 alias grep='grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
 alias pf='pathfind PATH'
-alias pfa='pathfind -a PATH'
+alias pfa='pathfind --all PATH'
 
 
 # command substitutions
-alias ff='sudo find / -name'
-alias df='df -h -x tmpfs -x usbfs'
+alias ff='find / -name'
+alias df='df --human-readable --exclude-type=tmpfs --exclude-type=usbfs'
 alias psg='ps -ef | grep'
 alias h='history | grep'
 alias which='type -all'
 alias ..='cd ..'
 alias path="echo -e ${PATH//:/\\\n}"
 alias vi='vim'
-alias du='du -h'
-alias dutop='du -h --max-depth=1'
+alias du='du --human-readable'
+alias dutop='du --human-readable --max-depth=1'
 alias man='LANG=C man'
 alias a2ps='LANG=fr_FR.ISO-8859-1 a2ps'
-alias genv='env | grep -i'
+alias genv='env | grep --ignore-case'
 alias gpg=gpg2
 alias pgp=gpg2
 alias metapost='PATH=/DATA/sources/metapost-beta-1.503/build/texk/{web2c,kpathsea}:$PATH mpost'
 
 
 # makes directory then moves into it
-function mkcdr {
-    mkdir -p -v $1
-    cd $1
-}
+function mkcdr { mkdir -p -v $1; cd $1; }
 
 
 # creates an archive from given directory
@@ -173,14 +168,12 @@ fi
 
 # libraries configurations
 export LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH}
-export LUA_PATH="./?.lua;${PREFIX}/share/lua/5.1/?.lua;${PREFIX}/share/lua/5.1/?/init.lua;${PREFIX}/lib/lua/5.1/?.lua;${PREFIX}/lib/lua/5.1/?/init.lua;${HOME}/lib/lua/5.1/./?.lua;${HOME}/lib/lua/5.1/./?/init.lua;;"
-export LUA_CPATH="./?.so;${PREFIX}/lib/lua/5.1/?.so;${PREFIX}/lib/lua/5.1/loadall.so;${HOME}/lib/lua/5.1/?.so;;"
 
 
 # other customization
+[ -f "~/.bashrc.$(hostname)" ] && source "~/.bashrc.$(hostname)"
 
 
 # clean-up
 unset MAIL
-
 
