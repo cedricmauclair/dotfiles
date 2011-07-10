@@ -86,7 +86,7 @@ urxvt*inheritPixmap:      true
 urxvt*reverseVideo:       false
 urxvt*tintColor:          S_base2
 urxvt*shading:            20 !trans=100, 0=opaque
-urxvt*font:               xft:Bitstream Vera Sans Mono-8
+urxvt*font:               xft:Bitstream Vera Sans Mono-10
 urxvt*scrollBar:          false
 urxvt*urlLauncher:        google-chrome
 urxvt*cursorBlink:        false
@@ -138,7 +138,7 @@ urxvt*color15:               S_base3
 
 ! emacs (to speed up things a bit)
 emacs*geometry:       115x69+0+0
-emacs*font:           DejaVu Sans Mono-8
+emacs*font:           DejaVu Sans Mono-10
 emacs*fontbackend:    xft
 emacsclient*geometry: 115x69+0+0
 
