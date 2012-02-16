@@ -35,11 +35,8 @@ export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
 
 # Useful variables
-if [ -f "~/.profile.prefix" ]; then
-    source ~/.profile.prefix
-else
-    export PREFIX=~
-fi
+export PREFIX=~
+
 [ -d "${PREFIX}/texlive" ] && export TEXLIVE=${PREFIX}/texlive
 [ -d "${PREFIX}/context" ] && export CONTEXT=${PREFIX}/context
 

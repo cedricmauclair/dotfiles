@@ -274,6 +274,8 @@ map ,mn :set guifont=<cr>
 " Mode programmation
 map ,mp :set guifont=Monospace\ 9<cr>
 
+set guifont=DejaVu_Sans_Mono:h9:cANSI
+
 " Sélectionner tout
 map <C-a> ggVG
 

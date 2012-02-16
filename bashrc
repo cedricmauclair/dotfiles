@@ -60,9 +60,9 @@ alias downloads='cd ${HOME}/downloads'
 alias pictures='cd ${HOME}/pictures'
 alias pics='cd ${HOME}/pictures'
 alias images='cd ${HOME}/pictures'
-alias sources="cd ${PREFIX}/sources"
+alias sources='cd ${HOME}/sources'
 alias acmetex='cd ${HOME}/documents/acmetex'
-alias gitrepos="cd ${PREFIX}/gitrepos/cmauclai"
+alias gitrepos='cd ${HOME}/gitrepos/cmauclai'
 alias dotfiles='cd ${HOME}/dotfiles'
 
 
@@ -87,7 +87,7 @@ alias psg='ps -ef | grep'
 alias h='history | grep'
 alias which='type -all'
 alias ..='cd ..'
-alias path="echo -e ${PATH//:/\\\n}"
+alias path='echo -e ${PATH//:/\\\n}'
 alias vi='vim'
 alias du='du --human-readable'
 alias dutop='du --human-readable --max-depth=1'
@@ -142,12 +142,6 @@ aliasdir() { alias $1="cd ${2:-${PWD}}"; }
 aliascmd() { x=$(history 2 | head -1 | sed 's/.\{7\}//'); alias $1="$x"; }
 
 
-# BSD specifics
-if [ "$(uname)" = "Darwin" ]; then
-    alias ls="ls -hG"
-fi
-
-
 # smart completion in shell
 if [ -f ${HOME}/.bash_completion ]; then
     source ${HOME}/.bash_completion
@@ -167,7 +161,7 @@ fi
 
 
 # libraries configurations
-export LD_LIBRARY_PATH=${PREFIX}/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${HOME}/lib:${PREFIX}/lib:${LD_LIBRARY_PATH}
 
 
 # other customization
