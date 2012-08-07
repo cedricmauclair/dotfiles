@@ -1,116 +1,70 @@
-# defaults
-if [ -f /etc/bashrc ]; then
-    source /etc/bashrc
-elif [ -f /etc/bash.bashrc ]; then
-    source /etc/bash.bashrc
-fi
+# Defaults
+[ -f /etc/bashrc ]      && source /etc/bashrc
+[ -f /etc/bash.bashrc ] && source /etc/bash.bashrc 
 
 
-# are we an interactive shell?
-if [ "${PS1}" ]; then
-    shopt -s checkwinsize
-    PS1='[\u@\h \W]$(__git_ps1) \\$ '
-else
-    return
-fi
+# Are we an interactive shell?
+if [ ! "${PS1}" ]; then return; fi
 
 
-# enable color support of ls and grep
-case "${TERM}" in
-    dumb) ;;
-    screen)
-        [ -f ${HOME}/.dircolors/dircolors.screen ] &&
-            eval $(dircolors --sh ${HOME}/.dircolors/dircolors.screen) ;;
-    *-color)
-        [ -f ${HOME}/.dircolors/dircolors.emacs ] &&
-            eval $(dircolors --sh ${HOME}/.dircolors/dircolors.emacs) ;;
-    *-256color)
-        [ -f ${HOME}/.dircolors/dircolors.256color ] &&
-            eval $(dircolors --sh ${HOME}/.dircolors/dircolors.256color) ;;
-    *)
-        [ -f ${HOME}/.dircolors/dircolors ] &&
-            eval $(dircolors --sh ${HOME}/.dircolors/dircolors) ;;
-esac
+# Some ls aliases
+alias ls='\ls --human-readable --color=auto --time-style=long-iso' # default settings,
+alias tree='\tree -Cs'      # nice alternative 
+alias ll='ls --long'        # long listing
+alias lx='ll -X'            # sort by extension
+alias lt='ll -t --reverse'  # sort by reversed date
+alias lk='ll -S --reverse'  # list by reversed size
+alias la='ls --almost-all'  # show hidden files
+alias lla='la --long'       # show hidden files
+alias lr='ll --recursive'   # recursice ls
+alias lm='lla | less'       # pipe through 'less'
+alias l='ls'                # quick listing
+alias lsd='ll | \grep "^d"' # list directories only
+alias l.='lla -d .*'        # list directories only
 
 
-# some ls aliases TODO: use long version of options
-alias ls='ls --human-readable --color=auto --time-style=long-iso' # add colors for filetype recognition
-alias lx='ls -l --reverse -X'  # sort by extension
-alias lk='ls -l --reverse -S'  # list by size
-alias la='ls --almost-all'     # show hidden files
-alias lla='ls -l --almost-all' # show hidden files
-alias lr='ls -l --recursive'   # recursive ls
-alias lt='ls -l --reverse -t'  # sort by modification time
-alias lm='ls --all -l | more'  # pipe through 'more'
-alias ll='ls -l'               # long listing
-alias l='ls'                   # quick listing
-alias lsd='ls -l | grep "^d"'  #list only directories
-alias l.='ls -l --almost-all --directory .*'
-
-
-# directories aliases
+# Directories aliases
 alias ..='cd ..'
-alias ...='cd ../..'
-alias home='cd ${HOME}/'
-alias scratch='cd ${HOME}/scratch'
-alias thesis='cd ${HOME}/thesis'
-alias memoir='cd ${HOME}/memoir'
-alias documents='cd ${HOME}/documents'
-alias downloads='cd ${HOME}/downloads'
-alias pictures='cd ${HOME}/pictures'
-alias pics='cd ${HOME}/pictures'
-alias images='cd ${HOME}/pictures'
-alias sources='cd ${HOME}/sources'
-alias acmetex='cd ${HOME}/documents/acmetex'
-alias gitrepos='cd ${HOME}/gitrepos/cmauclai'
-alias dotfiles='cd ${HOME}/dotfiles'
+alias home='cd ${HOME}'
+alias documents='cd ${HOME}/Documents'
+alias downloads='cd ${HOME}/Downloads'
+alias pictures='cd ${HOME}/Pictures'
 
 
-# general aliases
-alias setuptex='source ${CONTEXT}/tex/setuptex'
-alias current='source ${CONTEXT}/current/tex/setuptex'
-alias beta='source ${CONTEXT}/beta/tex/setuptex'
+# General aliases
+alias emacs='/usr/local/Cellar/emacs/24.1/Emacs.app/Contents/MacOS/Emacs'
 alias em='emacs -nw'
 alias findhere='find . -mindepth 1 -maxdepth 1'
 alias findupto='find . -mindepth 1 -maxdepth'
 alias fgrep='find . -type f -print0 | xargs --null grep'
-alias grep='grep --color=auto'
+alias grep='\grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
-alias pf='pathfind PATH'
-alias pfa='pathfind --all PATH'
 
 
-# command substitutions
-alias ff='find / -name'
-alias df='df --human-readable --exclude-type=tmpfs --exclude-type=usbfs'
+# Command substitutions
+ff() { find / "$@" 2>/dev/null; }
+alias df='df --human-readable -x tmpfs -x usbfs'
 alias psg='ps -ef | grep'
 alias h='history | grep'
 alias which='type -all'
-alias ..='cd ..'
 alias path='echo -e ${PATH//:/\\\n}'
 alias vi='vim'
 alias du='du --human-readable'
 alias dutop='du --human-readable --max-depth=1'
-alias man='LANG=C man'
-alias a2ps='LANG=fr_FR.ISO-8859-1 a2ps'
-alias genv='env | grep --ignore-case'
-alias gpg=gpg2
-alias pgp=gpg2
-alias metapost='PATH=/DATA/sources/metapost-beta-1.503/build/texk/{web2c,kpathsea}:$PATH mpost'
 
 
-# makes directory then moves into it
-function mkcdr { mkdir -p -v $1; cd $1; }
+# Makes directory then moves into it
+mkcdr() { mkdir -p -v $1; cd $1; }
 
 
-# creates an archive from given directory
+# Creates an archive from given directory
 mktar() { tar cvf  "${1%%/}.tar" "${1%%/}"; }
 mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}"; }
 mktbz() { tar cvjf "${1%%/}.tbz" "${1%%/}"; }
 mkzip() { zip -r   "${1%%/}"     "${1%%/}"; }
 
 
-# easy extract
+# Easy extract
 extract () {
     if [ -f $1 ] ; then
         case $1 in
@@ -134,40 +88,21 @@ extract () {
 }
 
 
-# alias a directory (default is current)
+# Alias a directory (default is current)
 aliasdir() { alias $1="cd ${2:-${PWD}}"; }
 
 
-# alias last command
+# Alias last command
 aliascmd() { x=$(history 2 | head -1 | sed 's/.\{7\}//'); alias $1="$x"; }
 
 
-# smart completion in shell
-if [ -f ${HOME}/.bash_completion ]; then
-    source ${HOME}/.bash_completion
-elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
-fi
-
-if [ -d ${HOME}/.bash_completion.d ]; then
-    for comp in ${HOME}/.bash_completion.d/*; do
-        source ${comp} 2>/dev/null
-    done
-elif [ -d /etc/bash_completion.d ]; then
-    for comp in /etc/bash_completion.d/*; do
-        source ${comp} 2>/dev/null
-    done
-fi
-
-
-# libraries configurations
-export LD_LIBRARY_PATH=${HOME}/lib:${PREFIX}/lib:${LD_LIBRARY_PATH}
-
-
-# other customization
-[ -f "~/.bashrc.$(hostname)" ] && source "~/.bashrc.$(hostname)"
-
+# Other customization
+EXTRAS=(
+  ".bashrc.$(uname)"
+  /etc/bash_completion
+  /usr/local/Library/Contributions/brew_bash_completion.sh )
+for EXTRA in "${EXTRAS[@]}"; do [ -f ${EXTRA} ] && source ${EXTRA}; done
 
 # clean-up
-unset MAIL
+unset MAIL MAILCHECK EXTRA EXTRAS
 
