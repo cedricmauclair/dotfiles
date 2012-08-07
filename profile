@@ -1,74 +1,38 @@
-# from ``/etc/profile'' on Fedora 11
-pathmunge () {
-    if ! echo $PATH | egrep -q "(^|:)$1($|:)" ; then
-       if [ "$2" = "after" ] ; then
-          PATH=$PATH:$1
-       else
-          PATH=$1:$PATH
-       fi
-    fi
-}
-
-munge () {
-    if ! echo \$$1 | egrep -q "(^|:)$2($|:)" ; then
-       if [ "$3" = "after" ] ; then
-          eval $1=\$$1:$2
-       elif [ "$3" = "export" ] ; then
-          eval export $1=\$$1:$2
-       else
-          eval $1=$2:\$$1
-       fi
-    fi
-}
-
-
-# no core files by default
+# No core files by default
 ulimit -S -c 0 >/dev/null 2>&1
 
 
-# history configurations
-export HISTSIZE=2000
-export HISTFILESIZE=2000
+# History configurations
+export HISTSIZE=32768
+export HISTFILESIZE=32768
 export HISTIGNORE=cd:ls
 export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
 
-# Useful variables
-export PREFIX=~
+# Platform/host specific settings
+EXTRAS=(
+  "$HOME/.profile.$(uname)"
+  "$HOME/.profile.$(hostname)")
 
-[ -d "${PREFIX}/texlive" ] && export TEXLIVE=${PREFIX}/texlive
-[ -d "${PREFIX}/context" ] && export CONTEXT=${PREFIX}/context
-
-
-# PATH additions, last takes precedence
-[ -d "${TEXLIVE}/bin/i386-linux" ] && pathmunge ${TEXLIVE}/bin/i386-linux
-[ -d "${PREFIX}/bin" ]     && pathmunge ${PREFIX}/bin
-[ -d "${HOME}/bin" ]       && pathmunge ${HOME}/bin
+for EXTRA in "${EXTRAS[@]}"; do [ -f "$EXTRA" ] && source "$EXTRA"; done
 
 
-# viewers/pager/editor configurations
-export PDFVIEWER=xpdf
-export PSVIEWER=gv
-export DVIVIEWER=xdvi
+# Last takes precedence
+EXTRAS=(
+  "$HOME/bin")
 
-export EDITOR=vim
-export VISUAL=view
-
-export OSFONTDIR=${HOME}/.fonts:${TEXLIVE}/../texmf-local/fonts:${TEXLIVE}/texmf-dist/fonts:/usr/share/fonts
+for EXTRA in "${EXTRAS[@]}"; do [ -d "$EXTRA" ] && PATH="$EXTRAS":$PATH; done
+export PATH
 
 
-# Platform specific settings
-[ -f "~/.profile.$(hostname)" ] && source "~/.profile.$(hostname)"
+export PAGER=less
 
 
-# clean-up
-unset pathmunge
-unset munge
+# Clean-up
+unset EXTRA EXTRAS
 
 
-# some more definitions
-source ${HOME}/.bashrc
-
-startx && exit 0
+# Bashrc
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
 
