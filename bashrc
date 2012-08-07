@@ -98,10 +98,12 @@ aliascmd() { x=$(history 2 | head -1 | sed 's/.\{7\}//'); alias $1="$x"; }
 
 # Other customization
 EXTRAS=(
-  ".bashrc.$(uname)"
+  "$HOME/.bashrc.$(uname)"
   /etc/bash_completion
-  /usr/local/Library/Contributions/brew_bash_completion.sh )
-for EXTRA in "${EXTRAS[@]}"; do [ -f ${EXTRA} ] && source ${EXTRA}; done
+  /usr/local/Library/Contributions/brew_bash_completion.sh
+)
+
+for EXTRA in "${EXTRAS[@]}"; do [ -f "$EXTRA" ] && source "$EXTRA"; done
 
 # clean-up
 unset MAIL MAILCHECK EXTRA EXTRAS
