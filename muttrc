@@ -8,6 +8,7 @@ set signature = ~/.signature
 set hostname = gmail.com
 
 # Headers
+set index_format = "%4C %Z %{%d/%m %H:%M} %-15.15L (%?l?%4l&%4c?) %s"
 hdr_order Date From To Cc
 my_hdr From: Cedric Mauclair <Cedric.Mauclair@gmail.com>
 
