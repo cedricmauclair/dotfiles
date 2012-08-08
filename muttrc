@@ -56,6 +56,10 @@ set wrap              = 78
 # Colors
 source ~/.mutt/colors.muttrc
 
+# Aliases
+set alias_file = "$HOME/.mutt/aliases"
+source "$HOME/.mutt/aliases"
+
 # Macros
 bind editor <space> noop
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
