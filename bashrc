@@ -39,6 +39,7 @@ alias findupto='find . -mindepth 1 -maxdepth'
 alias fgrep='find . -type f -print0 | xargs --null grep'
 alias grep='\grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
+alias luarocks="\luarocks --local"
 
 
 # Command substitutions
