@@ -44,7 +44,6 @@ alias mp='ps --forest -alu ${USER}'
 # Command substitutions
 ff() { find / "$@" 2>/dev/null; }
 alias df='df --human-readable -x tmpfs -x usbfs'
-alias psg='ps -ef | grep'
 alias h='history | grep'
 alias which='type -all'
 alias path='echo -e ${PATH//:/\\\n}'
