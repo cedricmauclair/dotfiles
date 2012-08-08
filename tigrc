@@ -3,7 +3,6 @@ set author-width      = 10
 set show-date         = local
 set show-rev-graph    = yes
 set line-graphics     = default
-set commit-encoding   = utf-8
 set horizontal-scroll = 33%
 set split-view-height = 66%
 set tab-size          = 2
