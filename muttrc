@@ -21,7 +21,6 @@ unignore Date Message-ID In-Reply-To
 set move = no
 
 # IMAP over SSL
-set imap_user             = 'cedricmauclair'
 set imap_authenticators   = login
 set imap_passive          = no
 set imap_check_subscribed = yes
@@ -36,7 +35,7 @@ set postponed = +[Gmail]/Drafts
 set trash     = +[Gmail]/Trash
 
 # SMTP
-set smtp_url  = smtps://cedricmauclair@smtp.gmail.com:465
+set smtp_url  = smtps://smtp.gmail.com:465
 set ssl_starttls = yes
 
 # Cache datas
