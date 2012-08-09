@@ -39,7 +39,6 @@ alias findupto='find . -mindepth 1 -maxdepth'
 alias fgrep='find . -type f -print0 | xargs --null grep'
 alias grep='\grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
-alias luarocks="\luarocks --local"
 
 
 # Command substitutions
@@ -51,6 +50,8 @@ alias path='echo -e ${PATH//:/\\\n}'
 alias vi='vim'
 alias du='du --human-readable'
 alias dutop='du --human-readable --max-depth=1'
+alias luarocks="\luarocks --local"
+alias mutt='PARINIT="rTbgqR B=.:;,?\!_A_a Q=_s>|" mutt'
 
 
 # Makes directory then moves into it
