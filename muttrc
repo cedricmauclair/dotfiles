@@ -30,7 +30,7 @@ set imap_keepalive        = 900
 # Folders
 set folder    = imaps://imap.gmail.com:993
 set spoolfile = +INBOX
-set record    = +[Gmail]/Sent
+set record    = +[Gmail]/"Sent Mail"
 set postponed = +[Gmail]/Drafts
 set trash     = +[Gmail]/Trash
 set to_chars  = ">»CFL"
