@@ -20,7 +20,7 @@ for EXTRA in "${EXTRAS[@]}"; do [ -f "$EXTRA" ] && source "$EXTRA"; done
 
 # Last takes precedence
 EXTRAS=(
-  "$HOME/bin")
+  "$HOME/local/bin")
 
 for EXTRA in "${EXTRAS[@]}"; do [ -d "$EXTRA" ] && PATH="$EXTRAS":$PATH; done
 export PATH
