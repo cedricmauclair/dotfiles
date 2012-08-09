@@ -27,6 +27,7 @@ export PATH
 
 
 export PAGER=less
+export PARINIT="rTbgqR B=.:;,?\!_A_a Q=_s>|"
 
 
 # Clean-up

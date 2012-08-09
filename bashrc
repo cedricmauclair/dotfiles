@@ -51,7 +51,6 @@ alias vi='vim'
 alias du='du --human-readable'
 alias dutop='du --human-readable --max-depth=1'
 alias luarocks="\luarocks --local"
-alias mutt='PARINIT="rTbgqR B=.:;,?\!_A_a Q=_s>|" mutt'
 
 
 # Makes directory then moves into it
