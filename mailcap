@@ -1,4 +1,5 @@
 #text/html; pandoc --from=html --to=markdown --standalone --columns=78 --reference-links %s; needsterminal; copiousoutput
 text/html; lynx -display_charset=utf-8 -force_html -dump %s; needsterminal; copiousoutput
 text/plain; iconv --from %{charset} --to utf-8 %s | par w78gqe; needsterminal; copiousoutput
+image/*; open %s
 
