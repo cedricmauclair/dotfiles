@@ -12,10 +12,8 @@ set index_format = "%4C %Z %{%d/%m %H:%M} %-15.15L (%?l?%4l&%4c?) %s"
 hdr_order Date From To Cc
 my_hdr From: Cedric Mauclair <Cedric.Mauclair@gmail.com>
 
-ignore 'Authentication-Results:'
-ignore 'DomainKey-Signature:'
-ignore 'DKIM-Signature:'
-unignore Date Message-ID In-Reply-To
+ignore *
+unignore Date From To Cc
 
 # Keep mails on server
 set move = no
