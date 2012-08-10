@@ -20,9 +20,10 @@ for EXTRA in "${EXTRAS[@]}"; do [ -f "$EXTRA" ] && source "$EXTRA"; done
 
 # Last takes precedence
 EXTRAS=(
+  "$HOME/local/texlive/bin/universal-darwin"
   "$HOME/local/bin")
 
-for EXTRA in "${EXTRAS[@]}"; do [ -d "$EXTRA" ] && PATH="$EXTRAS":$PATH; done
+for EXTRA in "${EXTRAS[@]}"; do [ -d "$EXTRA" ] && PATH="$EXTRA":$PATH; done
 export PATH
 
 
