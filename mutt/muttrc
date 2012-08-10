@@ -49,7 +49,6 @@ set sort              = 'threads'
 set sort_aux          = 'last-date-received'
 set editor            = 'vim'
 set pager_index_lines = 10
-set wrap              = 78
 set query_command     = "lbdbq '%s'"
 
 # Colors
