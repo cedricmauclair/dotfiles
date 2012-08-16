@@ -1,0 +1,9 @@
+" Setup pathogen
+call pathogen#infect()
+
+" Syntax highlighting
+syntax on
+filetype plugin indent on
+
+set formatprg=par\ w78gqe
+
