@@ -1,5 +1,6 @@
 " Setup pathogen
 call pathogen#infect()
+call pathogen#helptags()
 
 " Syntax highlighting
 syntax on
