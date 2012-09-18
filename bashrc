@@ -10,12 +10,12 @@ if [ ! "${PS1}" ]; then return; fi
 # Some ls aliases
 alias ls='\ls --human-readable --color=auto --time-style=long-iso' # default settings,
 alias tree='\tree -Cs'      # nice alternative 
-alias ll='ls --long'        # long listing
+alias ll='ls -l'            # long listing
 alias lx='ll -X'            # sort by extension
 alias lt='ll -t --reverse'  # sort by reversed date
 alias lk='ll -S --reverse'  # list by reversed size
 alias la='ls --almost-all'  # show hidden files
-alias lla='la --long'       # show hidden files
+alias lla='la -l'           # show hidden files
 alias lr='ll --recursive'   # recursice ls
 alias lm='lla | less'       # pipe through 'less'
 alias l='ls'                # quick listing
