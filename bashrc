@@ -2,10 +2,8 @@
 [ -f /etc/bashrc ]      && source /etc/bashrc
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc 
 
-
 # Are we an interactive shell?
 if [ ! "${PS1}" ]; then return; fi
-
 
 # Some ls aliases
 alias ls='\ls --human-readable --color=auto --time-style=long-iso' # default settings,
@@ -22,24 +20,20 @@ alias l='ls'                # quick listing
 alias lsd='ll | \grep "^d"' # list directories only
 alias l.='lla -d .*'        # list directories only
 
-
 # Directories aliases
 alias ..='cd ..'
 alias home='cd ${HOME}'
-alias documents='cd ${HOME}/Documents'
-alias downloads='cd ${HOME}/Downloads'
-alias pictures='cd ${HOME}/Pictures'
-
+alias documents='cd ${HOME}/documents'
+alias downloads='cd ${HOME}/downloads'
+alias pictures='cd ${HOME}/pictures'
 
 # General aliases
-alias emacs='/usr/local/Cellar/emacs/24.1/Emacs.app/Contents/MacOS/Emacs'
 alias em='emacs -nw'
 alias findhere='find . -mindepth 1 -maxdepth 1'
 alias findupto='find . -mindepth 1 -maxdepth'
 alias fgrep='find . -type f -print0 | xargs --null grep'
 alias grep='\grep --color=auto'
 alias mp='ps --forest -alu ${USER}'
-
 
 # Command substitutions
 ff() { find / "$@" 2>/dev/null; }
@@ -52,17 +46,14 @@ alias du='du --human-readable'
 alias dutop='du --human-readable --max-depth=1'
 alias luarocks="\luarocks --local"
 
-
 # Makes directory then moves into it
 mkcdr() { mkdir -p -v $1; cd $1; }
-
 
 # Creates an archive from given directory
 mktar() { tar cvf  "${1%%/}.tar" "${1%%/}"; }
 mktgz() { tar cvzf "${1%%/}.tgz" "${1%%/}"; }
 mktbz() { tar cvjf "${1%%/}.tbz" "${1%%/}"; }
 mkzip() { zip -r   "${1%%/}"     "${1%%/}"; }
-
 
 # Easy extract
 extract () {
@@ -87,18 +78,14 @@ extract () {
     fi
 }
 
-
 # Alias a directory (default is current)
 aliasdir() { alias $1="cd ${2:-${PWD}}"; }
-
 
 # Alias last command
 aliascmd() { x=$(history 2 | head -1 | sed 's/.\{7\}//'); alias $1="$x"; }
 
-
 # Other customization
 EXTRAS=(
-  "$HOME/.bashrc.$(uname)"
   /etc/bash_completion
   /usr/local/Library/Contributions/brew_bash_completion.sh
 )
@@ -107,4 +94,7 @@ for EXTRA in "${EXTRAS[@]}"; do [ -f "$EXTRA" ] && source "$EXTRA"; done
 
 # clean-up
 unset MAIL MAILCHECK EXTRA EXTRAS
+
+[ -f "$HOME/.bashrc.$(uname)" ] && source "$HOME/.bashrc.$(uname)"
+[ -f "$HOME/.bashrc.$(hostname)" ] && source "$HOME/.bashrc.$(hostname)"
 
