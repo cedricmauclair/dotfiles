@@ -96,10 +96,9 @@ urxvt*color15:               S_base3
 
 ! emacs (to speed up things a bit)
 emacs*geometry:       115x69+0+0
-emacs*font:           DejaVu Sans Mono-8
+emacs*font:           DejaVu Sans Mono-10
 emacs*fontbackend:    xft
 emacsclient*geometry: 115x69+0+0
 
 ! gvim
 Vim.geometry: 120x69+0+0
-
