@@ -5,6 +5,9 @@
 # Are we an interactive shell?
 if [ ! "${PS1}" ]; then return; fi
 
+shopt -s checkwinsize
+PS1='[\u@\h \W]$(__git_ps1) \\$ '
+
 # Some ls aliases
 alias ls='\ls --human-readable --color=auto --time-style=long-iso' # default settings,
 alias tree='\tree -Cs'      # nice alternative 
@@ -87,7 +90,6 @@ aliascmd() { x=$(history 2 | head -1 | sed 's/.\{7\}//'); alias $1="$x"; }
 # Other customization
 EXTRAS=(
   /etc/bash_completion
-  /usr/local/Library/Contributions/brew_bash_completion.sh
 )
 
 for EXTRA in "${EXTRAS[@]}"; do [ -f "$EXTRA" ] && source "$EXTRA"; done
